@@ -1,0 +1,8 @@
+***Settings***
+Library	  EWSLibrary    90
+
+
+***Variables***
+${GAMO_EQC}        http://eu2r3eqc.euhreka.erp:8000/sap/public/bc/ur/eWS/standard/logInPage.html?sap-client=900#initial
+${SECUREX_ECC}     http://scxeccci.securex.erp:8032/sap/public/bc/ur/eWS/customer/SCX/logInPageSCX.html?sap-client=100
+${DC_STANDARD}     

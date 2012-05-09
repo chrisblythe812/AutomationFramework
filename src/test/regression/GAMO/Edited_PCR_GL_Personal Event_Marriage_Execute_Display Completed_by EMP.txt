@@ -1,0 +1,47 @@
+***Settings***
+Library  EWSLibrary  90
+
+
+***Test Cases***
+PCR_GL_Personal Event_Marriage_Execute_Display Completed_by EMP
+
+
+  euh EWS Logon  IE  http://eu2r3eqc.euhreka.erp:8000/sap/public/bc/ur/eWS/standard/logInPage.html?sap-client=900  GAMO_KL_EP55  test_01  True
+  euh Navigate to Specific Tab  Workforce Administration  Employee Data  Pers. Action
+  euh Click Link  Marriage  Overview possible actions  0  True
+  euh Set Date Value  From  01.01.2011  ${None}  0
+  euh Set Date Value  Date of birth  15.06.1984  ${None}  0
+  euh Set Date Value  Start Date  01.01.2011  ${None}  0
+  euh Set Date Value  End Date  31.12.9999  ${None}  0
+  euh Set Text Value  First name  Spouse EE02  ${None}  0
+  euh Set Text Value  Last name  GAMO GL WA PCR PE  ${None}  0
+  euh Set Text Value  Name at Birth  Zera  ${None}  0
+  euh Set Text Value  Initials  ${None}  ${None}  0
+  euh Set Text Value  Birthplace  ${None}  ${None}  0
+  euh Select Drop Down Field Value  Gender  Female  ${None}  0
+  euh Select Drop Down Field Value  Country of Birth  ${None}  ${None}  0
+  euh Select Drop Down Field Value  Nationality  Belgian  ${None}  0
+  euh Click Button  Submit  ${None}  0  ${None}
+  euh Check Message Box  The action has been successfully submitted  Ok  False  True
+  euh Search and Open Completed PCR  Search  mar  0  <<current date/execution date>>  Marriage  Employee 02 GAMO GL WA PCR PE euHReka 99  Blue Collar Monthly  Regular   True  History & Pending Requests  0
+  euh Check Displayed Value  From  01.01.2011  ${None}  0  True
+  euh Check Displayed Value  Action Type  Personel Event  ${None}  0  True
+  euh Check Displayed Value  Reason for Action  Marriage  ${None}  0  True
+  euh Check Displayed Value  Employment  Active  ${None}  0  True
+  euh Check Displayed Value  Personnel area  euHReka 99  ${None}  0  True
+  euh Check Displayed Value  Employee group  Regular  ${None}  0  True
+  >> INVALID DATA >> euh Check Displayed Value  Employee subgroup  Blue Collar Hourly  ${None}  0  True
+  euh Check Displayed Value  Subtype  Spouse  ${None}  0  True
+  euh Check Displayed Value  First name  Spouse EE02  ${None}  0  True
+  euh Check Displayed Value  Last name  GAMO GL WA PCR PE  ${None}  0  True
+  euh Check Displayed Value  Gender  Female  ${None}  0  True
+  euh Check Displayed Value  Date of birth  15.06.1984  ${None}  0  True
+  euh Check Displayed Value  Name at Birth  Zera  ${None}  0  True
+  euh Check Displayed Value  Initials  ${None}  ${None}  0  True
+  euh Check Displayed Value  Birthplace  ${None}  ${None}  0  True
+  euh Check Displayed Value  Country of Birth  ${None}  ${None}  0  True
+  euh Check Displayed Value  Nationality  Belgian  ${None}  0  True
+  euh Check Field Existence  True  01.01.2011 - 31.12.9999  ${None}  0
+  euh Click Button  Cancel  ${None}  0  ${None}
+  euh Check Message Box  Are you sure to quit this PCR ?  Yes  False  True
+  euh EWS Logoff  Yes  True

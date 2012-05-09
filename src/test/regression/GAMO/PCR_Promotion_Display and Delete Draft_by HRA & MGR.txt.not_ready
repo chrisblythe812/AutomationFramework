@@ -1,0 +1,37 @@
+***Settings***
+Library EWSLibrary 45
+
+
+***Test Cases***
+PCR_Promotion_Display and Delete Draft_by HRA & MGR
+
+
+  euh EWS Logon  browser=IE  url=http://eu2r3etc.euhreka.erp:8011/sap/public/bc/ur/eWS/standard/logInPage.html?sap-client=200  user_name=gamo_kl_mg06  pwd=test_01  positive_test=True
+  euh Navigate to Specific Tab  module_name=Home  sub_module_name=Employer settings  tab_name=Functions  index=0
+  euh Set Text Value  widget_name=My Selections  label_name=Search  text_value=test  index=0
+  euh Select Radio Button  widget_name=My Selections  label_name=${None}  index=0  object_name=${None}
+  euh Click Link  widget_name=Overview possible actions  link_name=Promotion  index=0
+  euh Set Date Value  widget_name=${None}  label_name=From  text_value=dd/mm/yyyy  index=0
+  euh Select Drop Down Field Value  widget_name=${None}  label_name=${None}  dropdown_value=${None}  positive_test=True  index=0
+  euh Select Drop Down Field Value  widget_name=${None}  label_name=${None}  dropdown_value=${None}  positive_test=True  index=0
+  euh Select Drop Down Field Value  widget_name=${None}  label_name=${None}  dropdown_value=${None}  positive_test=True  index=0
+  euh Click Button  widget_name=${None}  button_name=Next  notification_message=Successfully submitted  index=0
+  euh Select Drop Down Field Value  widget_name=${None}  label_name=Personnel subarea  dropdown_value=${None}  positive_test=True  index=0
+  euh Select Drop Down Field Value  widget_name=${None}  label_name=Payroll area  dropdown_value=${None}  positive_test=True  index=0
+  euh Select Drop Down Field Value  widget_name=${None}  label_name=Position  dropdown_value=${None}  positive_test=True  index=0
+  euh Set Date Value  widget_name=${None}  label_name=Start Date  text_value=dd/mm/yyyy  index=0
+  euh Set Date Value  widget_name=${None}  label_name=End Date  text_value=dd/mm/yyyy  index=0
+  euh Click Button  widget_name=${None}  button_name=Cancel  notification_message=Successfully submitted  index=0
+  euh Check Message Box  Error_MessageBox=Do You Want to Save Your Changes?  Click_Button=Yes  close=True  positive_test=True
+  euh Select Radio Button  widget_name=My Details  label_name=${None}  index=0  object_name=${None}
+  euh Search and Open Draft PCR  widget_name=Drafts  search_label=Search  search_text=Promotion  row=0  check_action=Promotion  index=0  check_employeename=test check_personnelarea=euhreka 99  check_empsubgroup=white collar monthly  check_empgroup=regularclick_openwizard=True
+  euh Click Button  widget_name=${None}  button_name=Next  notification_message=Successfully submitted  index=0
+  euh Select Drop Down Field Value  widget_name=${None}  label_name=Personnel subarea  dropdown_value=${None}  positive_test=True  index=0
+  euh Select Drop Down Field Value  widget_name=${None}  label_name=Payroll area  dropdown_value=${None}  positive_test=True  index=0
+  euh Select Drop Down Field Value  widget_name=${None}  label_name=Position  dropdown_value=${None}  positive_test=True  index=0
+  euh Set Date Value  widget_name=${None}  label_name=Start Date  text_value=dd/mm/yyyy  index=0
+  euh Set Date Value  widget_name=${None}  label_name=End Date  text_value=dd/mm/yyyy  index=0
+  euh Click Button  widget_name=${None}  button_name=Cancel  notification_message=Successfully submitted  index=0
+  euh Check Message Box  Error_MessageBox=Do You Want to Save Your Changes?  Click_Button=Yes  close=False  positive_test=True
+  euh Search and Delete Draft PCR  widget_name=Drafts  search_label=Search  search_text=Promotion  row=0  check_action=Promotion  check_deletemsg=Do you want to delete this request?  index=0
+  euh EWS LogOff  confirmation_button=Yes  positive_test=True

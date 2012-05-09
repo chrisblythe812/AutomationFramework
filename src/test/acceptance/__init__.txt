@@ -1,0 +1,4 @@
+***Settings***
+Documentation       This is a suite of tests to verify that the EWS Automation framework is working correctly
+
+

@@ -1,0 +1,62 @@
+***Settings***
+Library EWSLibrary 45
+
+
+***Test Cases***
+OM_Cost Center_Org Mgr_Create_Edit_Delete
+
+
+  euh EWS Logon  browser=IE  url=http://eu2r3eqc.euhreka.erp:8000/sap/public/bc/ur/eWS/standard/logInPage.html?sap-client=900  user_name=GAMO_OM_OM02  pwd=test_01  positive_test=True
+  euh Navigate to Specific Tab  module_name=Home  sub_module_name=Employer settings  tab_name=Functions  index=0
+  euh Click Button  widget_name=Cost Center  button_name=Create Cost Center  notification_message=Successfully submitted  index=0
+  euh Set Text Value  widget_name=Cost Center  label_name=Title  text_value=Test Cost Center_01  index=0
+  euh Set Text Value  widget_name=Cost Center  label_name=Abbreviation  text_value=TCC  index=0
+  euh Set Text Value  widget_name=Cost Center  label_name=Pers. responsible  text_value=Tester  index=0
+  euh Set Date Value  widget_name=Cost Center  label_name=From  text_value=23/11/2011  index=0
+  euh Set Date Value  widget_name=Cost Center  label_name=To  text_value=31/12/9999  index=0
+  euh Click Button  widget_name=Cost Center  button_name=Save  notification_message=Successfully submitted  index=0
+  euh Click Button  widget_name=Create Cost Center  button_name=<<Invalid test data>>  notification_message=Successfully submitted  index=0
+  euh Click Link  widget_name=Cost Center  link_name=Test_Cost_Center_Edit  index=0
+  euh Set Text Value  widget_name=Cost Center  label_name=Title  text_value=Test_Cost_Center_Edit  index=0
+  euh Set Text Value  widget_name=Cost Center  label_name=Pers Responsible  text_value=Tester_Edit  index=0
+  euh Click Button  widget_name=Cost Center  button_name=Save  notification_message=Successfully submitted  index=0
+  euh Click Link  widget_name=Cost Center Tab  link_name=Test_Cos tCenter_O1  index=0
+  euh Click Link  widget_name=Cost Center Details  link_name=<<Invalid test data>>  index=0
+  euh Set Text Value  widget_name=Cost Center Details  label_name=Title  text_value=${None}  index=0
+  euh Click Button  widget_name=Cost Center Details  button_name=<<Invalid test data>>  notification_message=Successfully submitted  index=0
+  euh Click Link  widget_name=Cost Center Tab  link_name=Test_Cos tCenter_edit  index=0
+  euh Check Displayed Value  widget_name=Cost Center Details  label_name=Title  index=0  text_value=Test_Cost_Center  positive_test=True
+  euh Click Link  widget_name=Cost Center  link_name=Test_Cost_Center  index=0
+  euh Check Default Textbox Value  widget_name=Cost Center  label_name=Title  text_value=${None}  index=0
+  euh Check Default Textbox Value  widget_name=Cost Center  label_name=Pers.Responsible  text_value=${None}  index=0
+  euh Click Button  widget_name=Cost Center  button_name=<<Invalid test data>>  notification_message=Successfully cancelled  index=0
+  euh Click Link  widget_name=Cost Center  link_name=Delete  index=0
+  euh Click Button  widget_name=Delete Cost Center  button_name=<<Invalid test data>>  notification_message=Successfully deleted  index=0
+  euh Click Button  widget_name=Delete Cost Center  button_name=<<Invalid test data>>  notification_message=Successfully clicked Yes  index=0
+  euh EWS LogOff  confirmation_button=Yes  positive_test=True
+ text_value=Test Cost Center_01  index=0
+  euh Set Text Value  widget_name=Cost Center  label_name=Abbreviation  text_value=TCC  index=0
+  euh Set Text Value  widget_name=Cost Center  label_name=Pers. responsible  text_value=Tester  index=0
+  euh Set Date Value  widget_name=Cost Center  label_name=From  text_value=23/11/2011  index=0
+  euh Set Date Value  widget_name=Cost Center  label_name=To  text_value=31/12/9999  index=0
+  euh Click Button  widget_name=Cost Center  button_name=Save  notification_message=Successfully submitted  index=0
+  euh Click Button  widget_name=Create Cost Center  button_name=<<Invalid test data>>  notification_message=Successfully submitted  index=0
+  euh Click Link  widget_name=Cost Center  link_name=Test_Cost_Center_Edit  index=0
+  euh Set Text Value  widget_name=Cost Center  label_name=Title  text_value=Test_Cost_Center_Edit  index=0
+  euh Set Text Value  widget_name=Cost Center  label_name=Pers Responsible  text_value=Tester_Edit  index=0
+  euh Click Button  widget_name=Cost Center  button_name=Save  notification_message=Successfully submitted  index=0
+  euh Click Link  widget_name=Cost Center Tab  link_name=Test_Cos tCenter_O1  index=0
+  euh Click Link  widget_name=Cost Center Details  link_name=<<Invalid test data>>  index=0
+  euh Set Text Value  widget_name=Cost Center Details  label_name=Title  text_value=${None}  index=0
+  euh Click Button  widget_name=Cost Center Details  button_name=<<Invalid test data>>  notification_message=Successfully submitted  index=0
+  euh Click Link  widget_name=Cost Center Tab  link_name=Test_Cos tCenter_edit  index=0
+  euh Check Displayed Value  widget_name=Cost Center Details  label_name=Title  index=0  text_value=Test_Cost_Center  positive_test=True
+  euh Click Link  widget_name=Cost Center  link_name=Test_Cost_Center  index=0
+  euh Check Default Textbox Value  widget_name=Cost Center  label_name=Title  text_value=${None}  index=0
+  euh Check Default Textbox Value  widget_name=Cost Center  label_name=Pers.Responsible  text_value=${None}  index=0
+  euh Click Button  widget_name=Cost Center  button_name=<<Invalid test data>>  notification_message=Successfully cancelled  index=0
+  euh Click Link  widget_name=Cost Center  link_name=Delete  index=0
+  euh Click Button  widget_name=Delete Cost Center  button_name=<<Invalid test data>>  notification_message=Successfully deleted  index=0
+  euh Click Button  widget_name=Delete Cost Center  button_name=<<Invalid test data>>  notification_message=Successfully clicked Yes  index=0
+  euh EWS LogOff  confirmation_button=Yes  positive_test=True
+

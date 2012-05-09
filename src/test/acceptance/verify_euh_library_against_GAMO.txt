@@ -1,0 +1,67 @@
+***Settings***
+Resource    resource.txt
+Force Tags  Critical
+Test Teardown   Close Browser
+
+***Variables***
+${URL}   http://eu2r3eqc.euhreka.erp:8000/sap/public/bc/ur/eWS/standard/logInPage.html?sap-client=900#initial 
+#${URL}    http://localhost:7272/html/ews_loginPage.html
+#${URL}    http://localhost:7272/html/personal_data.html
+
+***Test Cases***    
+
+#Test Verify Standard Dummy Classes FF
+    #[Tags]   Firefox
+    #Verify Standard Dummy Classes   ff          ${URL}
+    
+Test Verify Standard Dummy Classes Chrome
+    [Tags]  Chrome
+    Verify Standard Dummy Classes   chrome      ${URL}
+
+    
+Test Verify Standard Dummy Classes IE
+    [Documentation]     This test will only run on windows based systems.
+    ${os}=      get os name
+    Run Keyword If      "${os}" in ['win32']    Verify Standard Dummy Classes   ie   ${URL}
+
+    
+*** Keywords ***
+Verify Standard Dummy Classes
+    [Arguments]     ${browser}  ${webpage}
+    #euh ews logon  ${browser}  ${webpage}   GAMO_TM_EP04    test_01     True
+    euh ews logon   ${browser}  ${webpage}   GAMO_KL_EP50    test_03     True
+    euh navigate to specific tab    Workforce Administration   Time Management     Timesheet
+    euh check button existence      OR:Submit Timesheet
+    euh check button existence      Save
+    euh navigate to specific tab    Workforce Administration   Payroll Data     Reporting
+    euh check link existence        Reports List      
+    euh check link existence        Results List
+    euh navigate to specific tab    Workforce Administration   Employee Data     Personal
+    euh check link existence        Personal IDs      
+    euh check link existence        E-mail
+    euh navigate to specific tab    Workforce Administration   Benefits     Benefit Statements
+    #euh check link existence        Current Year        #currently dummy classes not implemented here    
+    #euh check link existence        Last Year           #currently dummy classes not implemented here
+    euh navigate to specific tab    Talent Management   Learning     Dashboard
+    euh check link existence        All Prebookings      
+    euh check link existence        All Bookings
+    euh ews logoff
+
+
+    
+    
+    
+    #Open and Navigate Browser   ${browser}  ${webpage}
+    #test get label first as it will throw exceptions if there are any whereas verify label will not
+    #euh check label              User
+    #euh check label              Password
+    #euh click button             Login
+    #Page Should Contain          User or password not correct
+    
+
+    
+
+
+
+
+

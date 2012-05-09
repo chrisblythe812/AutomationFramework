@@ -1,0 +1,59 @@
+***Settings***
+Library  EWSLibrary  90
+
+
+***Test Cases***
+Job Catalog_Job Famliy_Create View Edit Delimit Delete_by Cat MGR
+
+
+  euh EWS Logon  IE  http://eu2r3eqc.euhreka.erp:8000/sap/public/bc/ur/eWS/standard/logInPage.html?sap-client=900  GAMO_KL_MG19  test_01  True
+  euh Navigate to Specific Tab  Strategy & Communication  Organizational Management  Job Catalog
+  euh Click Tree Item  Funcational  ${None}  0  True
+  euh Click Tree Item  Support  ${None}  0  True
+  euh Click Link  Create Job family  ${None}  0  True
+  euh Set Text Value  Job Family Name  Support  ${None}  0
+  euh Set Text Value  Abbrev.  SPT  ${None}  0
+  euh Set Date Value  From  01.01.2011  ${None}  0
+  euh Set Date Value  To  31.12.9999  ${None}  0
+  euh Click Button  Save  ${None}  0  Successfully submitted
+  euh Click Tree Item  Funcational  ${None}  0  True
+  euh Click Tree Item  Support  ${None}  0  True
+  euh Click Tree Item  Operation  ${None}  0  True
+  euh Click Link  View Job family  ${None}  0  True
+  euh Check Displayed Value  Job Family Name  Support.*  ${None}  0  True
+  euh Check Displayed Value  Object abbreviation  SPT  ${None}  0  True
+  euh Check Displayed Value  Description  ${None}  ${None}  0  True
+  euh Check Displayed Value  ID of related object  Funcational.*  ${None}  0  True
+  euh Check Field Existence  True  01.01.2011 - 31.12.9999  ${None}  0
+  euh Check Message Box  ${None}  ${None}  True  True
+  euh Click Tree Item  Funcational  ${None}  0  True
+  euh Click Tree Item  Support  ${None}  0  True
+  euh Click Link  Edit Job family  ${None}  0  True
+  euh Set Text Value  Description  Support Edit  ${None}  0
+  euh Set Text Value  Abbrev.  SPT Edit  ${None}  0
+  euh Click Button  Save  ${None}  0  Successfully submitted
+  euh Click Tree Item  Funcational  ${None}  0  True
+  euh Click Tree Item  Support Edit  ${None}  0  True
+  euh Click Link  View Job family  ${None}  0  True
+  euh Check Displayed Value  Job Family Name  Support Edit.*  ${None}  0  True
+  euh Check Displayed Value  Object abbreviation  SPT Edit  ${None}  0  True
+  euh Check Displayed Value  Description  ${None}  ${None}  0  True
+  euh Check Displayed Value  ID of related object  Funcational.*  ${None}  0  True
+  euh Click Tree Item  Funcational  ${None}  0  True
+  euh Click Tree Item  Support Edit  ${None}  0  True
+  euh Click Tree Item  Support  ${None}  0  True
+  euh Click Link  Delimit Job family  ${None}  0  True
+  euh Set Date Value  Delimit as from:  31.12.2011  ${None}  0
+  euh Check Message Box  Support.* Are you sure you want to delimit the object?  Yes  ${None}  True
+  euh Click Tree Item  Funcational  ${None}  0  True
+  euh Click Tree Item  Support Edit  ${None}  0  True
+  euh Click Tree Item  Support  ${None}  0  False
+  euh Click Tree Item  Funcational  ${None}  0  True
+  euh Click Tree Item  Support Edit  ${None}  0  True
+  euh Click Tree Item  Operation  ${None}  0  True
+  euh Click Link  Delete Job family  ${None}  0  True
+  euh Check Message Box  Operation.* Are you sure you want to delete this job family?  Yes  ${None}  True
+  euh Click Tree Item  Funcational  ${None}  0  True
+  euh Click Tree Item  Support Edit  ${None}  0  True
+  euh Click Tree Item  Operation  ${None}  0  False
+  euh EWS Logoff  Yes  True

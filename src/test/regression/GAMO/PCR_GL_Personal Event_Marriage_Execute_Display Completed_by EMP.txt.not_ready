@@ -1,0 +1,47 @@
+***Settings***
+Library EWSLibrary 45
+
+
+***Test Cases***
+PCR_GL_Personal Event_Marriage_Execute_Display Completed_by EMP
+
+
+  euh EWS Logon  browser=IE  url=http://eu2r3eqc.euhreka.erp:8000/sap/public/bc/ur/eWS/standard/logInPage.html?sap-client=900  user_name=GAMO_KL_EP55  pwd=test_01  positive_test=True
+  euh Navigate to Specific Tab  module_name=Workforce Administration  sub_module_name=Employee Data  tab_name=Pers. Action  index=0
+  euh Click Link  widget_name=Overview possible actions  link_name=Marriage  index=0
+  euh Set Date Value  widget_name=${None}  label_name=From  text_value=01.01.2011  index=0
+  euh Set Date Value  widget_name=${None}  label_name=Date of birth  text_value=15.06.1984  index=0
+  euh Set Date Value  widget_name=${None}  label_name=Start Date  text_value=01.01.2011  index=0
+  euh Set Date Value  widget_name=${None}  label_name=End Date  text_value=31.12.9999  index=0
+  euh Set Text Value  widget_name=${None}  label_name=First name  text_value=Spouse EE02  index=0
+  euh Set Text Value  widget_name=${None}  label_name=Last name  text_value=GAMO GL WA PCR PE  index=0
+  euh Set Text Value  widget_name=${None}  label_name=Name at Birth  text_value=Zera  index=0
+  euh Set Text Value  widget_name=${None}  label_name=Initials  text_value=${None}  index=0
+  euh Set Text Value  widget_name=${None}  label_name=Birthplace  text_value=${None}  index=0
+  euh Select Drop Down Field Value  widget_name=${None}  label_name=Gender  dropdown_value=Female  positive_test=True  index=0
+  euh Select Drop Down Field Value  widget_name=${None}  label_name=Country of Birth  dropdown_value=${None}  positive_test=True  index=0
+  euh Select Drop Down Field Value  widget_name=${None}  label_name=Nationality  dropdown_value=Belgian  positive_test=True  index=0
+  euh Click Button  widget_name=${None}  button_name=Submit  notification_message=${None}  index=0
+  euh Check Message Box  Error_MessageBox=The action has been successfully submitted  Click_Button=Ok  close=False  positive_test=True
+  euh Search and Open Completed PCR  widget_name=History & Pending Requests  search_label=Search  search_text=mar  row=0  check_date=<<current date/execution date>>  check_action=Marriage  index=0  check_employeename=Employee 02 GAMO GL WA PCR PE check_personnelarea=euHReka 99  check_empsubgroup=Blue Collar Monthly  check_empgroup=Regularclick_openwizard=True
+  euh Check Displayed Value  widget_name=${None}  label_name=From  index=0  text_value=01.01.2011  positive_test=True
+  euh Check Displayed Value  widget_name=${None}  label_name=Action Type  index=0  text_value=Personel Event  positive_test=True
+  euh Check Displayed Value  widget_name=${None}  label_name=Reason for Action  index=0  text_value=Marriage  positive_test=True
+  euh Check Displayed Value  widget_name=${None}  label_name=Employment  index=0  text_value=Active  positive_test=True
+  euh Check Displayed Value  widget_name=${None}  label_name=Personnel area  index=0  text_value=euHReka 99  positive_test=True
+  euh Check Displayed Value  widget_name=${None}  label_name=Employee group  index=0  text_value=Regular  positive_test=True
+  euh Check Displayed Value  widget_name=${None}  label_name=Employee subgroup  index=0  text_value=Blue Collar Hourly  positive_test=True
+  euh Check Displayed Value  widget_name=${None}  label_name=Subtype  index=0  text_value=Spouse  positive_test=True
+  euh Check Displayed Value  widget_name=${None}  label_name=First name  index=0  text_value=Spouse EE02  positive_test=True
+  euh Check Displayed Value  widget_name=${None}  label_name=Last name  index=0  text_value=GAMO GL WA PCR PE  positive_test=True
+  euh Check Displayed Value  widget_name=${None}  label_name=Gender  index=0  text_value=Female  positive_test=True
+  euh Check Displayed Value  widget_name=${None}  label_name=Date of birth  index=0  text_value=15.06.1984  positive_test=True
+  euh Check Displayed Value  widget_name=${None}  label_name=Name at Birth  index=0  text_value=Zera  positive_test=True
+  euh Check Displayed Value  widget_name=${None}  label_name=Initials  index=0  text_value=${None}  positive_test=True
+  euh Check Displayed Value  widget_name=${None}  label_name=Birthplace  index=0  text_value=${None}  positive_test=True
+  euh Check Displayed Value  widget_name=${None}  label_name=Country of Birth  index=0  text_value=${None}  positive_test=True
+  euh Check Displayed Value  widget_name=${None}  label_name=Nationality  index=0  text_value=Belgian  positive_test=True
+  euh Check Field Existence  widget_name=${None}  label_name=01.01.2011 - 31.12.9999  Field_Existence=True  index=0
+  euh Click Button  widget_name=${None}  button_name=Cancel  notification_message=${None}  index=0
+  euh Check Message Box  Error_MessageBox=Are you sure to quit this PCR ?  Click_Button=Yes  close=False  positive_test=True
+  euh EWS LogOff  confirmation_button=Yes  positive_test=True

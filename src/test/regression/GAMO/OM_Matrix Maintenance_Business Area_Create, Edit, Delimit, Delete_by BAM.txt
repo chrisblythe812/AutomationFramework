@@ -1,0 +1,92 @@
+***Settings***
+Library  EWSLibrary  90
+
+
+***Test Cases***
+OM_Matrix Maintenance_Business Area_Create, Edit, Delimit, Delete_by BAM
+  [Tags]   Current
+
+
+  euh EWS Logon  FF  http://eu2r3eqc.euhreka.erp:8000/sap/public/bc/ur/eWS/standard/logInPage.html?sap-client=900  GAMO_OM_BA04  test_01  True
+  euh Navigate to Specific Tab  Strategy & Communication  Organizational Management  Maintain
+  euh Select Drop Down Field Value  OR:om_maintain_org_structure  Business area view  ${None}  0    no_validation=True
+  wait until page contains element  id=OM_BAM_level5
+
+  euh Click Tree Item  GAMO_GL_SC_OM_MM_Main BA  ${None}  0  True
+  wait until page contains element   css=.balloon_container_show
+  euh Click Link  Create Business Area  ${None}  0  True
+  wait until page contains element   id=applicationsLayer_button_APP_OM_SAVE
+  
+  euh Set Text Value  Description  GAMO_GL_SC_OM_MM_Create  ${None}  0
+  euh Set Text Value  OR:om_maintain_abbrev  BA_Create  ${None}  0
+  euh Set Date Value  From  ${None}  ${None}  0
+  euh Set Date Value  To  ${None}  ${None}  0
+  euh Click Link  Maintain descriptions  ${None}  0  True
+  euh Set Text Area Value  OR:om_maintain_general_description  GAMO test to create 9O  ${None}  0  True
+  euh click button    OR:om_maintain_close_icon
+
+  #euh Check Message Box  ${None}  ${None}  True  True
+  euh Click Button  Save  ${None}  0  ${None}
+  #euh Select Drop Down Field Value  ${None}  Business area view  ${None}  0
+  euh Click Tree Item  GAMO_GL_SC_OM_MM_Create  ${None}  0  True
+  euh Click Link  View Business Area  ${None}  0  True
+  euh Check Displayed Value  Description  GAMO_GL_SC_OM_MM_Create [500053368]  ${None}  0  True
+  euh Check Displayed Value  Object abbreviation  BA_Create  ${None}  0  True
+  euh Check Displayed Value  Group Description  GAMO test to create 9O  ${None}  0  True
+  euh Check Displayed Value  ID of related object  GAMO_GL_SC_OM_MM_Main BA [50001516]  ${None}  0  True
+  #euh Check Field Existence  True  now - 31.12.9999  ${None}  0
+  #euh Check Message Box  ${None}  ${None}  True  True
+  euh click button    OR:om_maintain_close_icon
+  
+  #euh Select Drop Down Field Value  ${None}  Business area view  ${None}  0
+  euh Click Tree Item  GAMO_GL_SC_OM_MM_Main BA; GAMO_GL_SC_OM_MM_Create  ${None}  0  True
+  euh Click Link  Edit Business Area  ${None}  0  True
+  euh Set Text Value  Description  GAMO_GL_SC_OM_MM_Create_Edit  ${None}  0
+  euh Set Text Value  OR:om_maintain_abbrev_2  GAMO GL SC  ${None}  0
+  euh Set Date Value  From  ${None}  ${None}  0
+  euh Set Date Value  To  ${None}  ${None}  0
+  euh Click Link  Maintain descriptions  ${None}  0  True
+  euh Set Text Area Value   OR:om_maintain_general_description   GAMO test to create 9O - editted  ${None}  0  True
+
+  euh click button    OR:om_maintain_close_icon
+  euh Click Button  Save  ${None}  0  ${None}
+  #euh Select Drop Down Field Value  ${None}  Business area view  ${None}  0
+  euh Click Tree Item  GAMO_GL_SC_OM_MM_Main BA; GAMO_GL_SC_OM_MM_BA Create_Edit  ${None}  0  True
+  euh Click Link  View Business Area  ${None}  0  True
+  euh Check Displayed Value  Description  GAMO_GL_SC_OM_MM_Create_Edit [50005338]  ${None}  0  True
+  euh Check Displayed Value  Object abbreviation  BA_Create  ${None}  0  True
+  euh Check Displayed Value  Group Description  GAMO test to create 9O - editted  ${None}  0  True
+  euh Check Displayed Value  ID of related object  GAMO_GL_SC_OM_MM_Main BA [50001516]  ${None}  0  True
+  #euh Check Field Existence  True  ${None}  ${None}  0
+  #euh Check Message Box  ${None}  ${None}  True  True
+  euh click button    OR:om_maintain_close_icon
+
+  
+  euh Select Drop Down Field Value  ${None}  ${None}  ${None}  0
+  euh Click Tree Item  GAMO_GL_SC_OM_MM_Main BA; GAMO_GL_SC_OM_MM_BA_Create_Edit  ${None}  0  True
+  euh Click Link  Delimit Business Area  ${None}  0  True
+  #euh Set Date Value  Delimit as from:  now  ${None}  0
+  #euh Check Message Box  GGAMO_GL_SC_OM_MM_Create_Edit [50005232]  ${None}  True  True
+  #euh Check Message Box  Are you sure you want to delimit the object?  Yes  True  True
+  #euh Set Date Value  Date  now + 7 ${None}  0
+  #euh Select Drop Down Field Value  ${None}  ${None}  ${None}  0
+  euh click button  OR:om_maintain_close_icon
+
+  euh Click Tree Item  GAMO_GL_SC_OM_MM_Main BA; GAMO_GL_SC_OM_MM_BA Create_Edit  ${None}  0  True
+  euh Click Link  View Business Area  ${None}  0  True
+  euh Check Displayed Value  Description  GAMO_GL_SC_OM_MM_Create_Edit [50005232]  ${None}  0  True
+  euh Check Displayed Value  Object abbreviation  BA_Create  ${None}  0  True
+  euh Check Displayed Value  Group Description  GGAMO test to create 9O - editted  ${None}  0  True
+  euh Check Displayed Value  ID of related object  GAMO_GL_SC_OM_MM_Main BA [50001516]  ${None}  0  True
+  euh Check Field Existence  True  ${None}  ${None}  0
+  euh Check Message Box  ${None}  ${None}  True  True
+  euh Select Drop Down Field Value  ${None}  ${None}  ${None}  0
+  euh Click Tree Item  GAMO_GL_SC_OM_MM_Main BA; GAMO_GL_SC_OM_MM_BA Create_Edit  ${None}  0  True
+  euh Click Link  Delete Business Area  ${None}  0  True
+  euh Check Message Box  GAMO_GL_SC_OM_MM_Create_Edit [50005232]  ${None}  True  True
+  euh Check Message Box  Are you sure you want to delete the object?  Yes  True  True
+  euh Select Drop Down Field Value  ${None}  ${None}  ${None}  0
+  euh Click Tree Item  GAMO_GL_SC_OM_MM_Main BA  ${None}  0  True
+  euh Click Link  ${None}  ${None}  0  True
+  euh EWS Logoff  Yes  True
+

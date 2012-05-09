@@ -1,0 +1,51 @@
+***Settings***
+Library  EWSLibrary  90
+
+
+***Test Cases***
+OM_Cost Center_Org Mgr_Create_Edit_Delete
+    [Tags]   Working
+
+
+  euh EWS Logon  FF  http://eu2r3eqc.euhreka.erp:8000/sap/public/bc/ur/eWS/standard/logInPage.html?sap-client=900  GAMO_OM_OM02  test_01  True
+  euh Navigate to Specific Tab  Strategy & Communication   organizational management  Cost center
+  wait until page contains element   id=OM_costCenter_createButton        #TODO: might be helpful to put this in the click butto
+  euh Click Button  Create Cost Center  ${None}  0  ${None}
+  wait until page contains element  id=begda
+  
+  ${Title}=  euh Set Unique Text Value  OR:om_cost_center_title  cc  20  ${None}  0      
+  euh Set Text Value  OR:om_cost_center_pers_res  Tester  ${None}  1
+  ${Abbr}=   euh Set Unique Text Value  OR:om_cost_center_abbr  TCC  10  ${None}  0
+  #not user editable
+  #euh Set Date Value  OR:om_cost_center_from  23.11.2011  Create Cost Center  0
+  #euh Set Date Value  OR:om_cost_center_to  31.12.9999  Create Cost Center  0
+  euh Click Button  Save  ${None}  0  ${None}
+ 
+  wait for element to not be displayed   id=OM_costCenter_saveButton
+  euh Click Button  Refresh  ${None}  0  ${None}
+  euh Click Link  ${Title}  ${None}  0  True
+
+  #edit
+  ${NewTitle}=  euh Set Unique Text Value  OR:om_cost_center_edit_title  cc  20  ${None}  0   
+  euh Set Text Value  OR:om_cost_center_edit_pers_res  Tester Edited  ${None}  0
+  euh Click Button  Save  ${None}  0  ${None}
+  euh Click Link  ${NewTitle}  ${None}  0  True
+  euh Click Link  OR:om_cost_center_french  ${None}  0  True
+  euh Set Text Value  OR:om_cost_center_edit_title   Translated  ${None}  0
+  euh Click Button  Save  ${None}  0  ${None}
+
+  #verify
+  euh Click Link  ${NewTitle}  ${None}  0  True
+  euh Check Default Textbox Value   OR:om_cost_center_edit_title   ${NewTitle}  ${None}  0  True
+  euh Click Link  OR:om_cost_center_french   ${None}  0  True
+  euh Check Default Textbox Value  OR:om_cost_center_edit_title   Translated  ${None}  0
+  euh Check Default Textbox Value  OR:om_cost_center_edit_pers_res  Tester Edited  ${None}  0
+  euh Click Button  Cancel  ${None}  0  ${None}
+
+  #delete
+  euh Click Link  ${NewTitle}  ${None}  0  True
+  euh Click Button  Delete  ${None}  0  ${None}
+  euh Check Message Box  Are you sure you want to delete the object?  Yes  ${none}  True
+  euh EWS Logoff  Yes  True
+  Close Browser
+

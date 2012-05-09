@@ -1,0 +1,147 @@
+***Settings***
+Library  EWSLibrary  25
+
+
+***Test Cases***
+PDC_GL_Personal Details_Add_Change_Delete_by EXT
+    [Tags]   Working
+
+
+  euh EWS Logon  FF  http://eu2r3eqc.euhreka.erp:8000/sap/public/bc/ur/eWS/standard/logInPage.html?sap-client=900  TEST_CG_EX1  test_01  True
+  euh Navigate to Specific Tab  Workforce Administration  Employee Data  Personal
+  euh Click Link  ${None}  Personal Data  0  True
+  euh Click Link    Add     Personal Data   0   True
+  wait until page contains element  id=text_area_DATA_H_1_0_LANGU
+  euh Set Date Value  Start Date  01.01.2011  Personal Data  0
+  euh Set Date Value  End Date  01.01.2013  Personal Data  0
+  euh Set Date Value  Date of birth  ${None}  Personal Data  0
+  euh Select Drop Down Field Value  Title  ${None}  Personal Data  0
+  euh Select Drop Down Field Value  Nationality  ${None}  Personal Data  0
+  euh Select Drop Down Field Value  Language  ${None}  Personal Data  0
+  euh Select Drop Down Field Value  Country of Birth  ${None}  Personal Data  0
+  euh Select Drop Down Field Value  Other nationality  ${None}  Personal Data  0
+  euh Select Drop Down Field Value  Marital Status  ${None}  Personal Data  0
+  euh Select Drop Down Field Value  Language Key  English  Personal Data  0
+ 
+  euh Set Text Value  Last name  EXTERNAL  Personal Data  0
+  euh Set Text Value  First name  GAMO GL  Personal Data  0
+  euh Set Text Value  Professional mail address  ${None}  Personal Data  0
+  euh Set Text Value  Private mail address  ${None}  Personal Data  0
+  euh Set Text Value  Name at Birth  ${None}  Personal Data  0
+  euh Set Text Value  Initials  ${None}  Personal Data  0
+  euh Set Text Value  Birthplace  ${None}  Personal Data  0
+  euh Set Text Value  Number of children  ${None}  Personal Data  0
+  
+  #euh Check Displayed Value  User name  ${None}  Personal Data  0  True
+  euh Click Button  Save  Personal Data  0  ${None}
+  wait until page contains element  id=registersNavigationLayer_rightButton
+  #Saved initial Change
+
+  euh Click Link  ${None}  Personal Data  0  True
+  euh Check Displayed Value  Title  ${None}  Personal Data  0  True
+  euh Check Displayed Value  Last name  EXTERNAL  Personal Data  0  True
+  euh Check Displayed Value  First name  GAMO GL  Personal Data  0  True
+  euh Check Displayed Value  Date of birth  ${None}  Personal Data  0  True
+  euh Check Displayed Value  Nationality  ${None}  Personal Data  0  True
+  euh Check Displayed Value  Language  ${None}  Personal Data  0  True
+  euh Check Displayed Value  Professional mail address  ${None}  Personal Data  0  True
+  euh Check Displayed Value  Private mail address  ${None}  Personal Data  0  True
+  euh Check Displayed Value  Name at Birth  ${None}  Personal Data  0  True
+  euh Check Displayed Value  Initials  ${None}  Personal Data  0  True
+  euh Check Displayed Value  Birthplace  ${None}  Personal Data  0  True
+  euh Check Displayed Value  Country of Birth  ${None}  Personal Data  0  True
+  euh Check Displayed Value  Other nationality  ${None}  Personal Data  0  True
+  euh Check Displayed Value  Marital Status  ${None}  Personal Data  0  True
+  euh Check Displayed Value  Number of children  ${None}  Personal Data  0  True
+  euh Check Displayed Value  Language Key  English  Personal Data  0  True
+  euh Check Displayed Value  User name  ${None}  Personal Data  0  True
+  euh Check Field Existence  True  01.01.2011 - 01.01.2013  Personal Data  0
+  euh Click Link  ${None}  Personal Data  0  True
+  euh Check Field Existence  False  Title  Personal Data  0
+  euh Check Field Existence  True  Last name  Personal Data  0
+  euh Check Field Existence  True  First name  Personal Data  0
+  euh Check Field Existence  False  Date of birth  Personal Data  0
+  euh Check Field Existence  False  Nationality  Personal Data  0
+  euh Check Field Existence  False  Language  Personal Data  0
+  euh Check Field Existence  False  Professional mail address  Personal Data  0
+  euh Check Field Existence  False  Private mail address  Personal Data  0
+  euh Check Field Existence  False  Name at Birth  Personal Data  0
+  euh Check Field Existence  False  Initials  Personal Data  0
+  euh Check Field Existence  False  Birthplace  Personal Data  0
+  euh Check Field Existence  False  Country of Birth  Personal Data  0
+  euh Check Field Existence  False  Other nationality  Personal Data  0
+  euh Check Field Existence  False  Marital Status  Personal Data  0
+  euh Check Field Existence  False  Number of children  Personal Data  0
+  euh Check Field Existence  True  01.01.2011 - 01.01.2013  Personal Data  0
+  euh Click Icon  OR:personal_data_rightarrow  Personal Data  0  True
+  euh Click Link  ${None}  Personal Data  0  True
+  #Finishe - Verify initial insert
+
+  #Change
+  wait until page contains element   id=getContent_REC_PDCHANGEPERSDET
+  euh Click Link  Change  Personal Data  0  True
+  euh Select Drop Down Field Value  Title  ${None}  Personal Data  0
+  euh Select Drop Down Field Value  Nationality  ${None}  Personal Data  0
+  euh Select Drop Down Field Value  Language  ${None}  Personal Data  0
+  euh Select Drop Down Field Value  Country of Birth  ${None}  Personal Data  0
+  euh Select Drop Down Field Value  Other nationality  ${None}  Personal Data  0
+  euh Select Drop Down Field Value  Marital Status  ${None}  Personal Data  0
+  euh Select Drop Down Field Value  Language Key  ${None}  Personal Data  0
+  euh Set Date Value  Start Date  ${None}  Personal Data  0
+  euh Set Date Value  End Date  ${None}  Personal Data  0
+  euh Set Date Value  Date of birth  ${None}  Personal Data  0
+  euh Set Text Value  Last name  PDC EXTERNAL  Personal Data  0
+  euh Set Text Value  First name  GAMO GL WA  Personal Data  0
+  euh Set Text Value  Professional mail address  ${None}  Personal Data  0
+  euh Set Text Value  Private mail address  ${None}  Personal Data  0
+  euh Set Text Value  Name at Birth  ${None}  Personal Data  0
+  euh Set Text Value  Initials  ${None}  Personal Data  0
+  euh Set Text Value  Birthplace  ${None}  Personal Data  0
+  euh Set Text Value  Number of children  ${None}  Personal Data  0
+  
+  euh Check Displayed Value  User name  TEST_CG_EX1  Personal Data  0  True
+  euh Click Button  Save  Personal Data  0   ${None}
+  wait until page contains element  id=registersNavigationLayer_rightButton
+  euh Click Icon  OR:personal_data_rightarrow  Personal Data  0  True
+
+  #Successfully submitted
+  
+  euh Click Link  ${None}  Personal Data  0  True
+  euh Check Displayed Value  Title  ${None}  Personal Data  0  True
+  euh Check Displayed Value  Last name  PDC EXTERNAL  Personal Data  0  True
+  euh Check Displayed Value  First name  GAMO GL WA  Personal Data  0  True
+  euh Check Displayed Value  Date of birth  ${None}  Personal Data  0  True
+  euh Check Displayed Value  Nationality  ${None}  Personal Data  0  True
+  euh Check Displayed Value  Language  ${None}  Personal Data  0  True
+  euh Check Displayed Value  Professional mail address  ${None}  Personal Data  0  True
+  euh Check Displayed Value  Private mail address  ${None}  Personal Data  0  True
+  euh Check Displayed Value  Name at Birth  ${None}  Personal Data  0  True
+  euh Check Displayed Value  Initials  ${None}  Personal Data  0  True
+  euh Check Displayed Value  Birthplace  ${None}  Personal Data  0  True
+  euh Check Displayed Value  Country of Birth  ${None}  Personal Data  0  True
+  euh Check Displayed Value  Other nationality  ${None}  Personal Data  0  True
+  euh Check Displayed Value  Marital Status  ${None}  Personal Data  0  True
+  euh Check Displayed Value  Number of children  ${None}  Personal Data  0  True
+  euh Check Displayed Value  Language Key  ${None}  Personal Data  0  True
+  euh Check Displayed Value  User name  TEST_CG_EX1  Personal Data  0  True
+  euh Click Link  ${None}  Personal Data  0  True
+  euh Check Field Existence  True  Last name  Personal Data  0
+  euh Check Field Existence  True  First name  Personal Data  0
+  euh Check Field Existence  False  Date of birth  Personal Data  0
+  euh Check Field Existence  False  Nationality  Personal Data  0
+  euh Check Field Existence  False  Language  Personal Data  0
+  euh Check Field Existence  False  Professional mail address  Personal Data  0
+  euh Check Field Existence  False  Private mail address  Personal Data  0
+  euh Check Field Existence  False  Name at Birth  Personal Data  0
+  euh Check Field Existence  False  Initials  Personal Data  0
+  euh Check Field Existence  False  Birthplace  Personal Data  0
+  euh Check Field Existence  False  Country of Birth  Personal Data  0
+  euh Check Field Existence  False  Other nationality  Personal Data  0
+  euh Check Field Existence  False  Marital Status  Personal Data  0
+  euh Check Field Existence  False  Number of children  Personal Data  0
+  euh Click Link  Delete  Personal Data  0  True
+  euh Check Message Box  Do you really want to remove this record?  Yes  True  True
+  euh EWS Logoff  Yes  True
+  Close Browser
+  
+

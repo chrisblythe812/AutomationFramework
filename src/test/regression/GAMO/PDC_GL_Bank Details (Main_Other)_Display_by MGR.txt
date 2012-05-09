@@ -1,0 +1,46 @@
+***Settings***
+Library  EWSLibrary  90
+
+
+***Test Cases***
+PDC_GL_Bank Details (Main_Other)_Display_by MGR
+
+
+  euh EWS Logon  IE  http://eu2r3eqc.euhreka.erp:8000/sap/public/bc/ur/eWS/standard/logInPage.html?sap-client=900  gamo_kl_mg04  test_01  True
+  euh Navigate to Specific Tab  Workforce Administration  Employee Data  Personal
+  euh Click Link  Advanced Search  My Selections  0  True
+  euh Set Text Value  First name  EMP  ${None}  0
+  euh Set Text Value  Last name  GAMO PDC PA  ${None}  0
+  euh Select Drop Down Field Value  Company Code  ${None}  ${None}  0
+  euh Select Drop Down Field Value  Personnel area  ${None}  ${None}  0
+  euh Select Drop Down Field Value  Personnel subarea  ${None}  ${None}  0
+  euh Select Drop Down Field Value  Employee group  ${None}  ${None}  0
+  euh Select Drop Down Field Value  Employee subgroup  ${None}  ${None}  0
+  euh Select Drop Down Field Value  Payroll area  ${None}  ${None}  0
+  euh Select Drop Down Field Value  Contract Type  ${None}  ${None}  0
+  euh Select Drop Down Field Value  Work schedule rule  ${None}  ${None}  0
+  euh Select Drop Down Field Value  Position  ${None}  ${None}  0
+  euh Select Drop Down Field Value  Job key  ${None}  ${None}  0
+  euh Select Drop Down Field Value  Organizational unit  ${None}  ${None}  0
+  euh Click Button  Start Search  ${None}  0  ${None}
+  euh Set CheckBox  GAMO PDC PA  ON  ${None}  True
+  euh Click Button  Add  ${None}  0  ${None}
+  euh Select Radio Button  ${None}  ${None}  My Selections  0  True
+  euh Click Link  Main  Bank Details  0  True
+  euh Click Link  ${None}  Bank Details  0  True
+  euh Check Displayed Value  Street  Jalan 20  Bank Details  0  True
+  euh Check Displayed Value  Payee  GAMO GL WA PDC PA Employee 01  Bank Details  0  True
+  euh Check Displayed Value  Postal code  54555  Bank Details  0  True
+  euh Check Displayed Value  Bank Country  Belgium[BE]  Bank Details  0  True
+  euh Check Displayed Value  City  Setapak  Bank Details  0  True
+  euh Check Displayed Value  Bank Key  Fortis Bank- Fortis Banque  Bank Details  0  True
+  euh Check Displayed Value  Bank Account  001-4218443-86  Bank Details  0  True
+  euh Check Displayed Value  Payment method  Domestic banktransfers  Bank Details  0  True
+  euh Check Displayed Value  Payment currency  ${None}  Bank Details  0  True
+  euh Check Displayed Value  Purpose  ${None}  Bank Details  0  True
+  euh Check Displayed Value  IBAN  ${None}  Bank Details  0  True
+  euh Check Displayed Value  Standard Value  ${None}  Bank Details  0  True
+  euh Check Displayed Value  Standard Percentage  ${None}  Bank Details  0  True
+  euh Check Field Existence  True  01-01-2011 - 31-12--9999  Bank Details  0
+  euh EWS Logoff  Yes  True
+

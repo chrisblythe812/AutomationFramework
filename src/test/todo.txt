@@ -1,0 +1,15 @@
+Defects to Raise:
+
+Cannot input data into text fields in Safari on Mac.
+topmenu_text class should be a dummy class i.e. test_topmenu_text
+
+
+Defects with TM Script
+Invalid login
+euh ews log on - should be changed to euh ews logon
+last parameter (i.e. button name) is not needed, remove it
+please use two spaces and not vbTab as somethimes vbTab
+
+Navigate to tab should use tab named Time Views
+Click Button - issue with button name
+

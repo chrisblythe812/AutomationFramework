@@ -1,0 +1,92 @@
+***Settings***
+Library  EWSLibrary  90
+
+
+***Test Cases***
+PDC_GL_Family Details (Child)_Add_Change_by EMP
+
+
+  euh EWS Logon  IE  http://eu2r3eqc.euhreka.erp:8000/sap/public/bc/ur/eWS/standard/logInPage.html?sap-client=900  GAMO_KL_EP42  test_01  True
+  euh Navigate to Specific Tab  Workforce Administration  Employee Data  Personal
+  euh Click Link  ${None}  Family Details  0  True
+  euh Click Link  Add  Family Details  0  True
+  euh Select Drop Down Field Value  Relationship  Child  Family Details  0
+  euh Select Drop Down Field Value  Gender  Female  Family Details  0
+  euh Select Drop Down Field Value  Country of Birth  ${None}  Family Details  0
+  euh Select Drop Down Field Value  Nationality  Belgian  Family Details  0
+  euh Set Text Value  Last name  Employee 17  Family Details  0
+  euh Set Text Value  First name  EE First Child  Family Details  0
+  euh Set Text Value  Name at Birth  ${None}  Family Details  0
+  euh Set Text Value  Initials  ${None}  Family Details  0
+  euh Set Text Value  Birthplace  ${None}  Family Details  0
+  euh Set Date Value  Date of birth  12.04.2009  Family Details  0
+  euh Set Date Value  Start Date  12.04.2009  Family Details  0
+  euh Set Date Value  End Date  31.12.9999  Family Details  0
+  euh Click Button  Save  Family Details  0  Successfully submitted
+  euh Click Link  Child  Family Details  0  True
+  euh Check Displayed Value  Relationship  Child  Family Details  0  True
+  euh Check Displayed Value  Last name  Employee 17  Family Details  0  True
+  euh Check Displayed Value  First name  EE First Child  Family Details  0  True
+  euh Check Displayed Value  Gender  Female  Family Details  0  True
+  euh Check Displayed Value  Date of birth  12.04.2009  Family Details  0  True
+  euh Check Displayed Value  Name at Birth  ${None}  Family Details  0  True
+  euh Check Displayed Value  Initials  ${None}  Family Details  0  True
+  euh Check Displayed Value  Birthplace  ${None}  Family Details  0  True
+  euh Check Displayed Value  Country of Birth  ${None}  Family Details  0  True
+  euh Check Displayed Value  Nationality  Belgian  Family Details  0  True
+  euh Check Field Existence  True  12.04.2009 - 31.12.9999  Family Details  0
+  euh Click Link  ${None}  Family Details  0  True
+  euh Click Link  Add  Family Details  0  True
+  euh Select Drop Down Field Value  Relationship  Child  Family Details  0
+  euh Select Drop Down Field Value  Gender  Male  Family Details  0
+  euh Select Drop Down Field Value  Country of Birth  ${None}  Family Details  0
+  euh Select Drop Down Field Value  Nationality  Argentinian  Family Details  0
+  euh Set Text Value  Last name  Employee 17  Family Details  0
+  euh Set Text Value  First name  EE Second Child  Family Details  0
+  euh Set Text Value  Name at Birth  Zachary  Family Details  0
+  euh Set Text Value  Initials  ${None}  Family Details  0
+  euh Set Text Value  Birthplace  ${None}  Family Details  0
+  euh Set Date Value  Date of birth  04.09.2010  Family Details  0
+  euh Set Date Value  Start Date  04.09.2010  Family Details  0
+  euh Set Date Value  End Date  31.12.9999  Family Details  0
+  euh Click Button  Save  Family Details  0  Successfully submitted
+  euh Click Link  Child  Family Details  1  True
+  euh Check Displayed Value  Relationship  Child  Family Details  0  True
+  euh Check Displayed Value  Last name  Employee 17  Family Details  0  True
+  euh Check Displayed Value  First name  EE Second Child  Family Details  0  True
+  euh Check Displayed Value  Gender  Male  Family Details  0  True
+  euh Check Displayed Value  Date of birth  04.09.2010  Family Details  0  True
+  euh Check Displayed Value  Name at Birth  Zachary  Family Details  0  True
+  euh Check Displayed Value  Initials  ${None}  Family Details  0  True
+  euh Check Displayed Value  Birthplace  ${None}  Family Details  0  True
+  euh Check Displayed Value  Country of Birth  ${None}  Family Details  0  True
+  euh Check Displayed Value  Nationality  Argentinian  Family Details  0  True
+  euh Check Field Existence  True  04.09.2010 - 31.12.9999  Family Details  0
+  euh Click Link  Child  Family Details  0  True
+  euh Click Link  Change  Family Details  0  True
+  euh Select Drop Down Field Value  Relationship  ${None}  Family Details  0
+  euh Select Drop Down Field Value  Gender  ${None}  Family Details  0
+  euh Select Drop Down Field Value  Country of Birth  Argentina  Family Details  0
+  euh Select Drop Down Field Value  Nationality  Argentinian  Family Details  0
+  euh Set Text Value  Last name  ${None}  Family Details  0
+  euh Set Text Value  First name  ${None}  Family Details  0
+  euh Set Text Value  Name at Birth  Bella  Family Details  0
+  euh Set Text Value  Initials  ${None}  Family Details  0
+  euh Set Text Value  Birthplace  ${None}  Family Details  0
+  euh Set Date Value  Date of birth  ${None}  Family Details  0
+  euh Set Date Value  Start Date  ${None}  Family Details  0
+  euh Set Date Value  End Date  ${None}  Family Details  0
+  euh Click Button  Save  Family Details  0  Successfully submitted
+  euh Click Link  Child  Family Details  0  True
+  euh Check Displayed Value  Relationship  ${None}  Family Details  0  True
+  euh Check Displayed Value  Last name  ${None}  Family Details  0  True
+  euh Check Displayed Value  First name  ${None}  Family Details  0  True
+  euh Check Displayed Value  Gender  ${None}  Family Details  0  True
+  euh Check Displayed Value  Date of birth  ${None}  Family Details  0  True
+  euh Check Displayed Value  Name at Birth  Bella  Family Details  0  True
+  euh Check Displayed Value  Initials  ${None}  Family Details  0  True
+  euh Check Displayed Value  Birthplace  ${None}  Family Details  0  True
+  euh Check Displayed Value  Country of Birth  Argentina  Family Details  0  True
+  euh Check Displayed Value  Nationality  Argentinian  Family Details  0  True
+  euh Check Field Existence  True  ${None}  Family Details  0
+  euh EWS Logoff  Yes  True

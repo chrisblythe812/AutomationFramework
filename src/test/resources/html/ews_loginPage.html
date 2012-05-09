@@ -1,0 +1,951 @@
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+    <title>.: Logon - EWS :.</title>
+    <meta content="IE=EmulateIE7" http-equiv="X-UA-Compatible">
+    <meta content="NO-CACHE" http-equiv="CACHE-CONTROL">
+    <meta content="NO-CACHE" http-equiv="PRAGMA">
+    <script type="text/javascript" src="prototype.js"></script>
+    <script type="text/javascript" src="rsh.compressed.js"></script>
+    <style type="text/css">
+    
+        html,body html {
+	        margin: 0px;
+        }
+
+        button {
+       	    font-family: "Trebuchet MS";
+       	    border:none;
+       	    background:none;
+        }
+        
+        body {
+	        margin: 0px 0px 0px 0px;
+	        font-family: "Trebuchet MS";
+	        font-size: 12px;
+	        /*The default size for medium text in all modern browsers is 16px. This takes 16px down to 10px */
+	        background-repeat: no-repeat;
+	        background-color: #edecf1;
+        }
+        
+        #fwk_content {
+            background-color:#FEFDFB;
+            background-repeat:repeat-y;
+            float:left;
+            margin:0 auto;
+            padding-bottom:5px;
+            padding-left:6px;
+            padding-top:5px;
+            width:734px;
+        }
+        
+        #fwk_1 {
+            width:750px;
+            margin: 0 auto;
+        }
+
+        .fwk_wholeFrameWork {
+            background-color:#EDECF1;
+            margin:0 auto;
+            text-align:center;
+            width:1024px;
+        }
+        
+        .logOnBanner{
+            text-align:left;
+            float:left;
+            height:59px;
+            margin-top:60px;
+			margin-bottom:20px;
+            width:611px;
+        }
+        .logOnTitleIcon{
+            background: url("logOnSprite.png") no-repeat scroll -242px 0 transparent;
+            float:left;
+            height:59px;
+            width: 239px;
+        }
+        .LogOnContainer{
+            border:1px solid black;
+            float:left;
+            width:727px;
+            position: relative;
+        }
+        .logOnTitle{
+            color:#402279;
+            font-size:34px;
+            left:18px;
+            position:relative;
+            top: 12px;
+        }
+        .labelsCss{
+            width:120px;
+            float:left;
+            line-height:23px;
+            text-align:left;
+            font-weight:bold;
+        }        
+        
+        .valuesCss{
+            width:150px;
+            float:left;
+        }
+        
+        .fieldsContainer{
+            clear:both;
+            float:left;
+            margin-top:15px;
+        }
+        
+        .fieldsContentCss{
+            margin-top: 35px;
+            margin-left:90px;
+            float:left;
+        }
+        
+        div.leftRoundedCorner:hover span.centerRoundedButton {
+	        background-position: -0px -27px;
+	        cursor: pointer;
+        }
+
+        div.leftRoundedCorner:hover span.rightRoundedCorner {
+	        background-position: -227px -27px;
+        }
+        
+        .centerRoundedButton{
+            background: transparent url(logOnSprite.png) -0px -0px no-repeat;		    
+	        display: block;
+	        float: left;
+	        font-family: Calibri, Arial, sans-serif;
+	        font-size: 13px;
+	        height: 28px;
+	        line-height: 27px;
+	        padding-left: 15px;
+	        border:none;
+	        min-width:65px;
+	        white-space: nowrap;
+	        overflow: visible;
+	        cursor:pointer;
+	        margin:0;
+        }
+        
+        .centerRoundedButtonSpan{
+            float:left;
+	        padding-bottom:3px;
+	        padding-left: 5px;
+	        margin-right: 3px;
+        }
+        
+        .rightRoundedCorner{
+            background: url(logOnSprite.png) -227px -0px no-repeat;
+	        display: block;
+	        float: left;
+	        height: 28px;
+	        width: 15px;
+	        cursor:pointer;
+	        /*18.03.2011 This margin value avoid that the button appears with a separation in Chrome &amp; Safari Browsers*/
+	        margin-left: -2px;
+	        
+        }
+        
+        .infoIcon{
+            background: url("logOnSprite.png") no-repeat scroll -490px 0 transparent;
+            height: 31px;
+            width: 30px;
+            float: left;
+            margin-right:20px;
+        }
+        .infoMessage{
+            color: blue;
+            line-height: 30px;
+            margin-left: 20px;
+        }
+        .infoContainer{
+            clear: both;
+            float: left;
+            margin-top: 15px;
+            width: 100%;
+        }
+        .buttonsContainer{
+            margin-left: 210px;
+            clear:both;
+            float:left;
+            margin-top:15px;
+            margin-bottom:10px;
+        }
+        /*17.03.2011 This class was created for the case in which the user want to change the password. */
+        .buttonsContainer2{
+            right:357px;
+        }
+        
+        .buttonFrame{
+            min-width:85px;
+        }
+        
+        .application_action_link{
+            clear:both;
+            color:#0099CC;
+            cursor:pointer;
+            float:left;
+            font-family:Trebuchet MS;
+            font-size:12px;
+            font-weight:bold;
+            margin-bottom:15px;
+            text-decoration:underline;
+        }
+        
+        .application_action_link_disabled {
+	        clear:both;
+            color:#999999;
+            float:left;
+            font-family:Trebuchet MS;
+            font-size:12px;
+            font-weight:bold;
+            margin-bottom:15px;
+            text-decoration:underline;
+        }
+        .passContainer{
+            float:left;
+            margin-left:150px;
+            margin-top:45px;
+        }
+        
+        
+        .footContainer{
+            clear:both;
+            margin-bottom:10px;
+            margin-right:10px;
+            margin-top:36px;
+            max-width:200px;
+            position:relative;
+            float: right;
+            text-align: right;
+            width:200px;
+        }
+        
+        .errorContainer{
+            color:red;
+            clear:both;
+            margin-left:90px;
+            margin-top:8px;
+        }
+        .text_left{
+            text-align:left;
+        }
+        
+        .float_left{
+            float:left;
+        }
+        
+        .margin_leftButton{
+            margin-left:210px;
+            width:172px;
+        }
+        
+        /*17.03.2011 This class was created for the case in which the user want to change the password. */
+        .margin_leftButton2{
+            margin-left:210px;
+        }
+        
+        .mailMessage{
+            margin:10px;
+        }
+        #loadingMessage{
+            background:none repeat scroll 0 0 #492682;
+            color:white;
+            float:right;
+            height:18px;
+            margin-right:10px;
+            margin-top:10px;
+            width:50px;
+        }
+        .successMessage{
+            float: left;
+            margin: 5px 10px;
+            margin-left: 126px;
+            margin-top: 15px;
+        }
+        .contButton{
+            float: left;
+            margin-left: 126px;
+            margin-bottom:5px;
+        }
+        .clearFix{
+            clear: both;
+        }
+    </style>
+</head>
+<body onload="javascript:initializeLogInPage();">
+<div class="fwk_wholeFrameWork">
+    <div id="fwk_1">
+        <div id="logOnBanner" class="logOnBanner">
+            <span class="logOnTitleIcon"> </span>
+            <span class="logOnTitle" id="logOnTitle">Logon page</span>
+        </div>
+        <div id="fwk_content"><div class="LogOnContainer"><div class="fieldsContentCss"><div class="fieldsContainer"><div class="labelsCss test_label">User</div><input type="text" class="valuesCss test_input"></div><div class="fieldsContainer"><div class="labelsCss test_label">Password</div><input type="password" class="valuesCss test_input"></div></div><div class="passContainer"><button id="changeButton" class="application_action_link text_left test_link">Change password</button><button id="passwordButton" class="application_action_link text_left test_link">Password forgotten</button></div><div class="errorContainer text_left"></div><div class="buttonsContainer"><div class="buttonFrame"><div class="leftRoundedCorner"></div><button class="centerRoundedButton"><span class="centerRoundedButtonSpan test_button">Login</span></button><span class="rightRoundedCorner"></span></div></div><div class="clearFix"></div></div></div>
+        <div id="loadingMessage" style="display: none;">loading</div>
+    </div>
+</div>
+<script type="text/javascript">
+    //var url = "http://eu2r3edc.euhreka.erp:8002/"; var clientSystem = 300;
+    //var url = "http://eu2r3etc.euhreka.erp:8011/"; var clientSystem = 200;
+    var url = "http://eu2r3edn.euhreka.erp:8003/"; var clientSystem = 300; 
+    //var url = "http://eu2r3etn.euhreka.erp:8013/"; var clientSystem = 200;
+    //var url = "http://eu2r3dci.euhreka.erp:8000/"; var clientSystem = 934;
+    firstTime = true;
+    passToCall = false;
+    window.dhtmlHistory.create({ //Use prototype JSON methods 
+        toJSON: function(o) { return Object.toJSON(o); },
+        fromJSON: function(s) { return s.evalJSON(); } 
+    });
+    /*
+    *Function initializeLogInPage. Initialize the loginpage with the dhtmlHistory methods
+    */
+    function initializeLogInPage(isNotFirstTime){
+        if(!isNotFirstTime){
+            initializeHistory();
+            callToSAP();
+        }else if(this.labels){//problem with FF historyStorage is not correctly refresh when we click on F5
+            resetScreen();
+        }
+        historyDisplay("initial","initial");
+    }
+    /*
+    *Function initializeHistory. Initialize the dhtmlHistory methods
+    */
+    function initializeHistory(){
+        dhtmlHistory.initialize();
+        dhtmlHistory.addListener(historyChange);
+    }
+    /*
+    *Function historyChange. Control the button back of the browser
+    */
+    function historyChange(modifiedLocation,historyData){
+        initializeLogInPage(true);
+    }
+    /*
+    *Function historyDisplay. update the url in order to control back button.
+    */
+    function historyDisplay(modifiedLocation,historyData){
+        //var currentLocation = dhtmlHistory.getCurrentLocation();
+        historyData = "&lt;p&gt;" + historyData + "&lt;p&gt;";
+        dhtmlHistory.add(modifiedLocation, historyData);
+    }
+    function loadForm() {
+        var content = $('fwk_content');
+        content.update("");
+        var formContainer = new Element('div', { 'class': 'LogOnContainer' });
+        content.insert(formContainer);
+        fillContainer(formContainer);
+        updateTitle();
+    }
+
+    function resetScreen() {
+        //$('fwk_content').update('');
+        loadForm();
+    }
+    function getLabelsSAP() {
+        if (navigator.language)
+            var language = navigator.language;
+        else
+            var language = navigator.userLanguage;
+            
+        var customer = getURLParam('customer');
+        var xml = "&lt;EWS&gt;" +
+                    "&lt;SERVICE&gt;LOGON_LABELS&lt;/SERVICE&gt;" +
+                    "&lt;NOCNTX&gt;X&lt;/NOCNTX&gt;" +
+                    "&lt;PARAM&gt;" +
+                        "&lt;I_LANGU&gt;" + language + "&lt;/I_LANGU&gt;" +                                
+                        "&lt;GCC&gt;" + customer + "&lt;/GCC&gt;" +
+                    "&lt;/PARAM&gt;" +
+                  "&lt;/EWS&gt;";
+
+        //var __localHost = "../../proxy.aspx?url=" + escape("http://eu2r3edn.euhreka.erp:8003/sap/bc/yglui_httpconfi");
+        //Uncomment the next line when commit to the server
+        var __localHost = "/sap/bc/yglui_httpconfi";
+        new Ajax.Request(__localHost, {
+            method: 'post',
+            postBody: xml,
+            onSuccess: function(transport) {
+                var json = transport.responseText.evalJSON(true);
+                this.alias = json.EWS.o_alias;
+                getLabelsSuccess(json);
+            },
+            onFailure: function(transport) {
+                loadForm();
+            }
+        });           
+    }
+
+    function getLabelsSuccess(json) {
+        this.labels = $H();
+        if (json.EWS.labels) {
+            var labels = json.EWS.labels.item;
+            for (var i = 0; i &lt; labels.length; i++) {
+                this.labels.set(labels[i]['@id'], labels[i]['@value']);
+            }
+        }
+        loadForm();
+    }
+
+    function getLabel(labelId) {
+        if (this.labels &amp;&amp; this.labels.get(labelId))
+            return this.labels.get(labelId);
+        else
+            return labelId;
+    }
+    
+    function getURLParam(strParamName) {
+        var strHref = window.location.href;
+        var params = strHref.toQueryParams();
+        var firstPartParams = $H(strHref.toQueryParams());
+        var secondPartParams = $H(strHref.substr(strHref.indexOf("#") + 1).toQueryParams());
+        var result = firstPartParams.merge(secondPartParams);
+        return (result.get(strParamName)) ? result.get(strParamName) : '';
+    }
+    
+    function fillContainer(form) {
+        document.observe('keyup', pressEnter.bind(this));
+        this.fieldsContent = new Element('div', { 'class': 'fieldsContentCss' })
+
+        var contentUser = new Element('div', { 'class': 'fieldsContainer' });
+        var userLabel = new Element('div', { 'class': 'labelsCss test_label' }).insert(getLabel('user'));
+        this.userValue = new Element('input', { 'type': 'text', 'class': 'valuesCss test_input' });
+        
+        var contentPassword = new Element('div', { 'class': 'fieldsContainer' });
+        var passwordLabel = new Element('div', { 'class': 'labelsCss test_label' }).insert(getLabel('password'));
+        this.passwordValue = new Element('input', { 'type': 'password', 'class': 'valuesCss test_input' });
+
+        contentUser.insert(userLabel);
+        contentUser.insert(this.userValue);
+        contentPassword.insert(passwordLabel);
+        contentPassword.insert(this.passwordValue);
+
+        this.fieldsContent.insert(contentUser);
+        this.fieldsContent.insert(contentPassword);
+
+        form.insert(this.fieldsContent);
+        createButtons(form);
+    }
+
+    function createButtons(form) {
+        this.form = form;
+
+        this.passWordsContainer = new Element('div', { 'class': 'passContainer' });
+        var change = new Element('button', { 'id': 'changeButton', 'class': 'application_action_link text_left test_link' }).insert(getLabel('changepassword'));
+        var forgotten = new Element('button', { 'id': 'passwordButton', 'class': 'application_action_link text_left test_link' }).insert(getLabel('forgotten'));
+        this.changeEvent = change.on('click', checkBlock.bind(this, true));
+        this.forgotEvent = forgotten.on('click', getClientId.bind(this));
+        this.passWordsContainer.insert(change);
+        this.passWordsContainer.insert(forgotten);
+
+        form.insert(this.passWordsContainer);
+
+        this.errorContainer = new Element('div', { 'class': 'errorContainer text_left' });
+        form.insert(this.errorContainer);
+
+        this.buttonsContainer = new Element('div', { 'class': 'buttonsContainer' });
+        this.aux = new Element('div', {
+            'class': 'buttonFrame'
+        });
+        var auxLeft = new Element('div', {
+            'class': 'leftRoundedCorner'
+        });
+        var auxButton = new Element('button', { 'class': 'centerRoundedButton' });
+        var auxCenter = new Element('span', { 'class': 'centerRoundedButtonSpan test_button' });
+        var auxRight = new Element('span', {
+            'class': 'rightRoundedCorner'
+        });
+        auxCenter.insert(getLabel('login'));
+        auxButton.insert(auxCenter);
+        this.aux.insert(auxLeft);
+        this.aux.insert(auxButton);
+        this.aux.insert(auxRight);
+
+        this.buttonsContainer.insert(this.aux);
+        form.insert(this.buttonsContainer);
+
+
+        this.aux.observe('click', checkBlock.bind(this, null));
+        
+        
+        addFoot(form);
+    }
+    function checkBlock(change) {
+        if (passToCall) {
+            callToSAP(change);
+        }
+        else {
+        var user = escape(this.userValue.value);
+        var changeButton = this.passWordsContainer.down('[id=changeButton]');
+        var passButton = this.passWordsContainer.down('[id=passwordButton]');
+        var xml = "&lt;EWS&gt;" +
+                    "&lt;SERVICE&gt;IS_LOCKED&lt;/SERVICE&gt;" +
+                    "&lt;NOCNTX&gt;X&lt;/NOCNTX&gt;" +
+                    "&lt;PARAM&gt;" +
+                        "&lt;UNAME&gt;" + user + "&lt;/UNAME&gt;" +
+                    "&lt;/PARAM&gt;" +
+                  "&lt;/EWS&gt;";
+        //var __localHost = "../../proxy.aspx?url=" + escape("http://eu2r3edn.euhreka.erp:8003/sap/bc/yglui_httpconfi");
+        //Uncomment the next line when commit to the server
+        var __localHost = "/sap/bc/yglui_httpconfi";
+        new Ajax.Request(__localHost, {
+            method: 'post',
+            postBody: xml,
+                onSuccess: function(change, transport) {
+                var json = transport.responseText.evalJSON(true);
+                    var notuserLocked = json.EWS.o_ll_conf;
+                    if (notuserLocked === '2' || !notuserLocked) {
+                        if (change) {
+                    callToSAP(change);
+                        }
+                        else {
+                    this.changeEvent.stop();
+                    this.changeEvent.start();
+                    changeButton.addClassName('application_action_link');
+                    this.forgotEvent.stop();
+                    this.forgotEvent.start();
+                    passButton.addClassName('application_action_link');
+                            callToSAP();
+                }
+                    }
+                    else if (notuserLocked === '1') {
+                    var label = getLabel('userlockedhimself');
+                    this.changeEvent.stop();
+                    changeButton.removeClassName('application_action_link');
+                    changeButton.addClassName('application_action_link_disabled');
+                    this.errorContainer.update(label);
+                }
+                    else if (notuserLocked === '4') {
+                        if (change) {
+                            callToSAP(change);
+                        }
+                        //showing information message
+                        else {
+                            showInfoMessage(json);
+                        }
+                    }
+                else {
+                    var label = getLabel('userlockedadministrator');
+                    this.changeEvent.stop();
+                    changeButton.removeClassName('application_action_link');
+                    changeButton.addClassName('application_action_link_disabled');
+                    this.forgotEvent.stop();
+                    passButton.removeClassName('application_action_link');
+                    passButton.addClassName('application_action_link_disabled');
+                    this.errorContainer.update(label);
+                }
+                } .bind(this, change),
+            onFailure: function(transport) {
+                var label = getLabel('serviceFail');
+                this.errorContainer.update(label);
+            }
+        });
+    }
+    }
+    function showInfoMessage(json) {
+        var containerInfo = new Element('div', { 'class': 'infoContainer' });
+        this.errorContainer.update(containerInfo);
+        var infoIcon = new Element('div', { 'class': 'infoIcon' });
+        containerInfo.insert(infoIcon);
+        var infoMessage = new Element('div', { 'class': 'infoMessage' }).insert(getLabel('usermultisession'));
+            containerInfo.insert(infoMessage);
+        passToCall = true;
+    }
+
+    function addFoot(form) {
+
+
+
+        var clearFix = new Element('div', {'class':'clearFix'});
+        form.insert(clearFix);
+        this.userValue.focus();
+    }
+
+    function pressEnter(event) {
+        if (event.keyCode == Event.KEY_RETURN) {
+            if (passToCall)
+                callToSAP();
+            else
+            checkBlock();
+        }
+    }
+
+    function changePassword() {
+        document.stopObserving('keyup');
+        this.errorContainer.update('');
+        this.aux.hide();
+        this.passWordsContainer.hide();
+        var contentNewPass = new Element('div', { 'class': 'fieldsContainer' });
+        var newPassLabel = new Element('div', { 'class': 'labelsCss test_label' }).insert(getLabel('newPass'));
+        this.newPassValue = new Element('input', { 'type': 'password', 'class': 'valuesCss test_input' });
+        var contentRepeatPass = new Element('div', { 'class': 'fieldsContainer' });
+        var repeatPassLabel = new Element('div', { 'class': 'labelsCss test_label' }).insert(getLabel('repeatPass'));
+        this.repeatPassValue = new Element('input', { 'type': 'password', 'class': 'valuesCss test_input' });
+
+        contentNewPass.insert(newPassLabel);
+        contentNewPass.insert(this.newPassValue);
+        contentRepeatPass.insert(repeatPassLabel);
+        contentRepeatPass.insert(this.repeatPassValue);
+
+        this.fieldsContent.insert(contentNewPass);
+        this.fieldsContent.insert(contentRepeatPass);
+
+        this.changeButton = new Element('div', {
+            'class': 'buttonFrame float_left'
+        });
+        var CBLeft = new Element('div', {
+            'class': 'leftRoundedCorner'
+        });
+        var CBButton = new Element('button', { 'class': 'centerRoundedButton' });
+        var CBCenter = new Element('span', { 'class': 'centerRoundedButtonSpan test_button' });
+        var CBRight = new Element('span', { 'class': 'rightRoundedCorner' });
+            
+        CBCenter.insert(getLabel('change'));
+        CBButton.insert(CBCenter);
+        this.changeButton.insert(CBLeft);
+        this.changeButton.insert(CBButton);
+        this.changeButton.insert(CBRight);
+
+        this.buttonsContainer.insert(this.changeButton);
+
+        this.changeButton.observe('click', changePassService.bind(this));
+
+        this.cancelButton = new Element('div', {
+            'class': 'buttonFrame float_left'
+        });
+        var CanBLeft = new Element('div', {
+            'class': 'leftRoundedCorner'
+        });
+        var CanBButton = new Element('button', { 'class': 'centerRoundedButton' });
+        var CanBCenter = new Element('span', { 'class': 'centerRoundedButtonSpan test_button' });
+        var CanBRight = new Element('span', {
+            'class': 'rightRoundedCorner'
+        });
+        CanBCenter.insert(getLabel('cancel'));
+        CanBButton.insert(CanBCenter);
+        this.cancelButton.insert(CanBLeft);
+        this.cancelButton.insert(CanBButton);
+        this.cancelButton.insert(CanBRight);
+
+        this.buttonsContainer.insert(this.cancelButton);
+
+        /*18.03.2011 This code modify was created to fix the bad alignment of the
+        buttons when user select "chance password" option and the language inside the
+        buttons is a string of more than 10 letters*/
+
+        this.buttonsContainer.addClassName('margin_leftButton2');
+        this.buttonsContainer.removeClassName('buttonsContainer');
+        this.buttonsContainer.addClassName('buttonsContainer2');
+
+        this.cancelButton.observe('click', killCookie.bind(this));
+    }
+    function killCookie() {
+        var logOffXml = "&lt;EWS&gt;&lt;SERVICE&gt;CLEAR_SESSION&lt;/SERVICE&gt;&lt;PARAM&gt;&lt;SSO&gt;CLEAR&lt;/SSO&gt;&lt;AREA/&gt;&lt;/PARAM&gt;&lt;/EWS&gt;";
+        //var __localHost = "../../proxy.aspx?url=" + escape(url + "sap/bc/yglui_httpentry");
+        //Uncomment the next line when commit to the server
+        var __localHost = "/sap/bc/yglui_httpentry";
+        new Ajax.Request(__localHost, {
+            method: 'post',
+            postBody: logOffXml,
+            onSuccess: function(transport) {
+                resetScreen();
+            },
+            onFailure: function(transport) {
+                Redirect();
+            }
+        });
+    }
+
+    function changePassService() {
+        if (this.newPassValue.value != this.repeatPassValue.value) {
+            this.errorContainer.update(getLabel('samePass'));
+            this.repeatPassValue.value = '';
+            this.repeatPassValue.focus();
+        }
+        else {
+            if (navigator.language)
+                var language = navigator.language;
+            else
+                var language = navigator.userLanguage;
+
+            var client = getURLParam('sap-client');
+            var user = this.userValue.value;
+            var oldPass = this.passwordValue.value;
+            var newPass = this.newPassValue.value;
+            //var __localHost = "../../proxy.aspx?url=" + escape("http://eu2r3edn.euhreka.erp:8003/sap/bc/yglui_httpconfi");
+            //Uncomment the next line when commit to the server
+            var __localHost = "/sap/bc/yglui_httpconfi";
+            var xmlIn = "&lt;EWS&gt;" +
+                             "&lt;SERVICE&gt;CHANGE_PASSWORD&lt;/SERVICE&gt;" +
+                             "&lt;PARAM&gt;" +
+                                  "&lt;I_LANGU&gt;" + language + "&lt;/I_LANGU&gt;" +
+                                  "&lt;I_UNAME&gt;"+user+"&lt;/I_UNAME&gt;" +
+                                  "&lt;I_CLIENT&gt;"+client+"&lt;/I_CLIENT&gt;" +
+                                  "&lt;I_OLD_PASSWORD&gt;" + oldPass + "&lt;/I_OLD_PASSWORD&gt;" +
+                                  "&lt;I_NEW_PASSWORD&gt;"+newPass+"&lt;/I_NEW_PASSWORD&gt;" +
+                             "&lt;/PARAM&gt;" +
+                             "&lt;NOCNTX&gt;X&lt;/NOCNTX&gt;" +
+                             "&lt;DEL/&gt;" +
+                        "&lt;/EWS&gt;";
+
+            new Ajax.Request(__localHost, {
+                method: 'post',
+                postBody: xmlIn,
+                onSuccess: function(transport) {
+                    var json = transport.responseText.evalJSON(true);
+                    passWordChanged(json);
+                },
+                onFailure: function(transport) {
+                    this.errorContainer.update(getLabel('ChangeError'));
+                }
+            });
+        }
+    }
+
+    function passWordChanged(json) {
+        if (json.EWS.webmessage_type == 'E') {
+            this.errorContainer.update(json.EWS.webmessage_text);
+            this.newPassValue.value = '';
+            this.repeatPassValue.value = '';
+            this.newPassValue.focus();
+        }
+        else {
+            this.errorContainer.update('');
+            var successMes = new Element('div', { 'class': 'successMessage' }).insert(getLabel('passOK'));
+            var continueLink = new Element('div', { 'class': 'application_action_link contButton test_link' }).insert(getLabel('continue'));
+            this.form.update(successMes);
+            this.form.insert(continueLink);
+            continueLink.observe('click', Redirect.bind(this));
+            Redirect.bind(this).delay('5');
+        }
+    }
+
+    function Redirect() {
+        //window.location = '../../index.html?sesid=' + this.sesId + '&amp;light=' + this.light + '&amp;right=' + this.right;
+        //Uncomment the next line when commit to the server
+        var versionText = this.version;
+        window.location = "/sap/bc/bsp/sap/"+versionText+"/index.html?sap-client=" + client + "&amp;sesid=" + sesId + '&amp;light=' + this.light + '&amp;right=' + this.right; 
+    }
+
+    function callToSAP(change) {
+        //var __localHost = "../../proxy.aspx?url=" + escape("http://eu2r3edn.euhreka.erp:8003/sap/bc/yglui_req_sso?sap-client=300");
+        //Uncomment the next line when commit to the server
+        var __localHost = "/sap/bc/yglui_req_sso";
+        if (!__localHost.include('proxy')) {
+            __localHost = unescape(__localHost);
+            
+        }
+        var client = getURLParam('sap-client');
+        if (this.userValue &amp;&amp; this.userValue.value) {
+                var user = escape(this.userValue.value);
+            }
+            //Adding the Password to the URL
+            if (this.passwordValue &amp;&amp; this.passwordValue.value) {
+                var pass = escape(this.passwordValue.value);
+        }
+
+        if (this.alias)
+            var name = 'sap-alias=';
+        else
+            var name = 'sap-user=';
+        var parameters = name + user + '&amp;sap-password=' + pass + '&amp;sap-client=' + client;
+        
+
+        new Ajax.Request(__localHost, {
+            method: 'post',
+            parameters: parameters,
+            onSuccess: function(transport) {
+                if (this.errorContainer)
+                    this.errorContainer.update('');
+                firstTime = true;
+                this.client = transport.responseText.evalJSON(true).EWS['sap-client'];
+                this.sesId = transport.responseText.evalJSON(true).EWS['sesid'];
+                this.light = transport.responseText.evalJSON(true).EWS['light-ui'];
+                this.version = transport.responseText.evalJSON(true).EWS['eWS-version'];
+                var newPass = transport.responseText.evalJSON(true).EWS['pwd-initial'];
+                var rightPanel = transport.responseText.evalJSON(true).EWS['right-panel'];
+                var browserBar = transport.responseText.evalJSON(true).EWS['browser-bar'];
+                var sysDownPage = transport.responseText.evalJSON(true).EWS['err-page'];
+                if (sysDownPage) {
+                    window.location = "/sap/public/bc/ur/eWS/standard/sysDownPage.html";
+                    //Uncomment the next line when commit to the server
+                    //window.location = sysDownPage;
+                }
+                else {
+                if (rightPanel &amp;&amp; (rightPanel == true || rightPanel == "true"))
+                    this.right = true;
+                else
+                    this.right = false;
+                if (!change &amp;&amp; newPass != 'true') {
+                    if (browserBar == 'X') {
+                    //window.location = '../../index.html?sesid=' + this.sesId + '&amp;light=' + this.light + '&amp;right=' + this.right;
+                    //Uncomment the next line when commit to the server
+                        window.location = "/sap/bc/bsp/sap/"+this.version+"/index.html?sap-client=" + this.client + "&amp;sesid=" + this.sesId + '&amp;light=' + this.light + '&amp;right=' + this.right;
+                    }
+                    else {
+                        //window.open('../../index.html?sesid=' + this.sesId + '&amp;light=' + this.light + '&amp;right=' + this.right, '_blank', 'toolbar=false, resizable=1, scrollbars=1');
+                        window.open('/sap/bc/bsp/sap/' + this.version + '/index.html?sap-client=' + this.client + '&amp;sesid=' + this.sesId + '&amp;light=' + this.light + '&amp;right=' + this.right, '_blank', 'toolbar=false, resizable=1, scrollbars=1');
+                    }
+                }
+                else {
+                        firstTime = false;
+                    changePassword();
+                }
+                }
+            },
+            onFailure: function(transport) {
+                if (firstTime) {
+                    firstTime = false;
+                    getLabelsSAP();
+                }
+                else {
+                    passToCall = false;
+                    this.passwordValue.value = '';
+                    this.errorContainer.update(getLabel('wrongData'));
+                }
+
+            }
+        });
+    }
+
+    function getClientId() {
+        if (this.userValue.value == '') {
+            this.errorContainer.update(getLabel('fillUser'));
+        }
+        else {
+            this.errorContainer.update('');
+            //var __localHost = "../../proxy.aspx?url=" + escape("http://eu2r3edn.euhreka.erp:8003/sap/bc/yglui_httpconfi");
+            //Uncomment the next line when commit to the server
+            var __localHost = "/sap/bc/yglui_httpconfi";
+            var client = getURLParam('sap-client');
+            if (navigator.language)
+                var language = navigator.language;
+            else
+                var language = navigator.userLanguage;
+            var xmlIn = "&lt;EWS&gt;" +
+                        "&lt;SERVICE&gt;RESET_PASSWORD&lt;/SERVICE&gt;" +
+                        "&lt;PARAM&gt;" +
+                            "&lt;I_ACTION&gt;L&lt;/I_ACTION&gt;" +
+                            "&lt;I_LANGU&gt;" + language + "&lt;/I_LANGU&gt;" +
+                            "&lt;I_CLIENT&gt;" + client + "&lt;/I_CLIENT&gt;" +
+                        "&lt;/PARAM&gt;" +
+                        "&lt;NOCNTX&gt;X&lt;/NOCNTX&gt;" +
+                        "&lt;DEL/&gt;" +
+                    "&lt;/EWS&gt;";
+
+            new Ajax.Request(__localHost, {
+                method: 'post',
+                postBody: xmlIn,
+                onSuccess: function(transport) {
+                    var a = 0;
+                    var json = transport.responseText.evalJSON(true);
+                    getLink(json);
+                },
+                onFailure: function(transport) {
+                    var b = 0;
+                    b = 1;
+                }
+            });
+        }
+    }
+
+    function getLink(json) {
+        //var __localHost = "../../proxy.aspx?url=" + escape("http://eu2r3edn.euhreka.erp:8003/sap/bc/yglui_httpconfi");
+        //Uncomment the next line when commit to the server
+        var __localHost = "/sap/bc/yglui_httpconfi";
+        var systemId = json.EWS.o_sysid;
+        var client = getURLParam('sap-client');    
+        var stUrl = location.href;
+        stUrl = stUrl.substring(0, stUrl.indexOf('/', 10));
+
+        if (navigator.language)
+            var language = navigator.language;
+        else
+            var language = navigator.userLanguage;
+        var xml = "&lt;EWS&gt;" +
+                     "&lt;SERVICE&gt;RESET_PASSWORD&lt;/SERVICE&gt;" +
+                     "&lt;PARAM&gt;" +
+                        "&lt;I_ACTION&gt;I&lt;/I_ACTION&gt;" +
+                        "&lt;I_LANGU&gt;" + language + "&lt;/I_LANGU&gt;" +
+                        "&lt;I_UNAME&gt;" + this.userValue.value + "&lt;/I_UNAME&gt;" +
+                        "&lt;I_SYSID&gt;" + systemId + "&lt;/I_SYSID&gt;" +
+                        "&lt;I_CLIENT&gt;" + client + "&lt;/I_CLIENT&gt;" +
+                        //"&lt;I_URL&gt;" + stUrl + "/new_field_panel/standard/logOnPage/resetPassword.html&lt;/I_URL&gt;" +
+                        "&lt;I_URL&gt;" + stUrl + "/sap/public/bc/ur/eWS/standard/resetPassword.html&lt;/I_URL&gt;" +
+                     "&lt;/PARAM&gt;" +
+                     "&lt;NOCNTX&gt;X&lt;/NOCNTX&gt;" +
+                     "&lt;DEL/&gt;" +
+                   "&lt;/EWS&gt;";
+
+        new Ajax.Request(__localHost, {
+            method: 'post',
+            postBody: xml,
+            onSuccess: function(transport) {
+                var json = transport.responseText.evalJSON(true);
+                showMailMessage(json);
+            },
+            onFailure: function(transport) {
+                var b = 0;
+                b = 1;
+            }
+        });
+    }
+
+    function showMailMessage(json) {
+        var cont = true;
+        var message;
+        var labelId = json.EWS.messages.item['@msgv1'];
+        for (var i = 0; i &lt; json.EWS.labels.item.length &amp;&amp; cont; i++) {
+            if (labelId == json.EWS.labels.item[i]['@id']) {
+                cont = false;
+                message = json.EWS.labels.item[i]['@value'];
+            }
+        }
+        if (cont) {
+            message = json.EWS.messages.item['@msgv1'];
+        }
+        var mailMessage = new Element('div', { 'class': 'mailMessage' }).insert(message);
+        //back link
+        var backLabel = getLabel("back_login_page");
+        var backLabelLength = backLabel.length + 108;
+        //var backLinkStyle = "width:" + backLabel.length + "px, left:50%, margin-left: -" + backLabel.length/2 + "px, position:relative";
+        var backbuttonContainer =  new Element('div'); 
+        var backButton = new Element('span', { 'class': 'application_action_link test_link' }).insert(backLabel);
+        backButton.setStyle({
+            width:  backLabelLength + "px",
+            left: "50%",
+            marginLeft: "-" + backLabelLength/2 + "px",
+            position: "relative"
+        });
+        backButton.on('click', initializeLogInPage.bind(this,true));
+        backbuttonContainer.insert(backButton);
+        this.form.update(mailMessage);
+        this.form.insert(backbuttonContainer);
+    }
+
+    function updateTitle(){
+        var titleContainer = $("logOnTitle");
+        var title = getLabel("logonPage");
+        titleContainer.update(title);
+    }
+    Ajax.Responders.register({
+        /**
+        * This function will be called when making a new AJAX request
+        */
+        onCreate: function() {
+            var loading = $('loadingMessage');
+            loading.update(getLabel('loading'));
+            loading.show();
+        },
+        /**
+        * This function will be executed when an AJAX request is done
+        */
+        onComplete: function() {
+            if (Ajax.activeRequestCount == 0) {
+                $('loadingMessage').hide();
+            }
+        }
+    });
+</script><form style="left:-1000px;top:-1000px;width:1px;height:1px;border:0;position:absolute;" id="rshStorageForm"><textarea style="left:-1000px;top:-1000px;width:1px;height:1px;border:0;position:absolute;" id="rshStorageField"></textarea></form>
+
+
+ </body></html>

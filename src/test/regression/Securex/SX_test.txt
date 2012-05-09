@@ -1,0 +1,64 @@
+***Settings***
+Library     EWSLibrary  90
+#Test Teardown   Close Browser
+
+***Variables***
+${URL}   http://scxeccci.securex.erp:8032/sap/public/bc/ur/eWS/customer/SCX/logInPageSCX.html?sap-client=100    
+#${URL}    http://localhost:7272/html/
+${Login.UserName}   css=input[type='text']
+${Login.Password}   css=input[type='password']
+${Login.Button}     css=button > span
+${Main.Logoff}      css=.test_topLink[name="Log off"]
+${MyCompanies.Search}   css=#text_area_searchBoxDivMYCA:enabled
+
+***Test Cases***    
+
+Test FindLabel_FF
+    [Tags]   Firefox
+    Verify Standard Dummy Classes   ff          ${URL}
+    
+#Test FindLabel_Chrome
+#    [Tags]  Chrome
+#    Verify Standard Dummy Classes   chrome      ${URL}
+
+    
+#Test FindLabel_IE
+#    [Documentation]     This test will only run on windows based systems.
+#    ${os}=      get os name
+#    Run Keyword If      "${os}" in ['win32']    Verify Standard Dummy Classes   ie   ${URL}
+
+    
+*** Keywords ***
+Verify Standard Dummy Classes
+    [Arguments]     ${browser}  ${webpage}
+    Open Browser   ${webpage}   ${browser}
+    Wait Until Page Contains Element    ${Login.UserName}
+    Input Text  ${Login.UserName}   S_TESTCA62
+    Input Text  ${Login.Password}   securex1
+    Click Element   ${Login.Button}
+    Wait Until Page Contains Element    ${MyCompanies.Search}       #wait until it's enabled
+    Input Text  ${MyCompanies.Search}   T.G.V.
+
+
+
+    #test get label first as it will throw exceptions if there are any whereas verify label will not
+    #Get Label              Username
+    #Verify Label Exist     Username
+    #Verify Label Exist     Password
+    #negative test case
+    #Verify Label Exist     label not on page    ${FALSE}
+    #Verify Label Count     2
+    #Verify textbox Count   2
+    #Get Textbox            Username
+    #Verify Textbox Exist   Username
+    #Verify Textbox Exist   Password
+    
+
+Open and Navigate Browser
+    [Arguments]          ${client}   ${url}
+    Open Browser        ${client}   3
+    Go to                ${url}
+    Location Should Be  ${url}
+    
+
+

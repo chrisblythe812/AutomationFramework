@@ -1,0 +1,80 @@
+***Settings***
+Library  EWSLibrary  90
+
+
+***Test Cases***
+PCR_GL_Personal Event_Divorce_Separation_Execute_Display Completed_by HRA
+
+
+  euh EWS Logon  IE  http://eu2r3eqc.euhreka.erp:8000/sap/public/bc/ur/eWS/standard/logInPage.html?sap-client=900  GAMO_KL_HA24  test_01  True
+  euh Navigate to Specific Tab  Workforce Administration  Employee Data  Pers. Action
+  euh Click Link  Advanced Search  My Selections  0  True
+  euh Set Text Value  First name  employee 15  ${None}  0
+  euh Set Text Value  Last name  ${None}  ${None}  0
+  euh Select Drop Down Field Value  Company Code  ${None}  ${None}  0
+  euh Select Drop Down Field Value  Personnel area  ${None}  ${None}  0
+  euh Select Drop Down Field Value  Personnel subarea  ${None}  ${None}  0
+  euh Select Drop Down Field Value  Employee group  ${None}  ${None}  0
+  euh Select Drop Down Field Value  Employee subgroup  ${None}  ${None}  0
+  euh Select Drop Down Field Value  Payroll area  ${None}  ${None}  0
+  euh Select Drop Down Field Value  Contract Type  ${None}  ${None}  0
+  euh Select Drop Down Field Value  Work schedule rule  ${None}  ${None}  0
+  euh Select Drop Down Field Value  Position  ${None}  ${None}  0
+  euh Select Drop Down Field Value  Job key  ${None}  ${None}  0
+  euh Select Drop Down Field Value  Organizational unit  ${None}  ${None}  0
+  euh Click Button  Start Search  ${None}  0  ${None}
+  euh Set CheckBox  GAMO GL WA PCR PE  ON  ${None}  True
+  euh Click Button  Add  ${None}  0  ${None}
+  euh Select Radio Button  Employee 15 GAMO GL WA PCR PE  ${None}  My Selections  0  True
+  euh Click Link  Divorce  Overview possible actions  0  True
+  euh Set Date Value  From  20.09.2011  ${None}  0
+  euh Check Displayed Value  Action Type  Personal Event  ${None}  0  True
+  euh Check Displayed Value  Reason for Action  Divorce  ${None}  0  True
+  euh Check Displayed Value  Employment  Active  ${None}  0  True
+  euh Check Displayed Value  Personnel area  euHReka 99  ${None}  0  True
+  euh Check Displayed Value  Employee group  Regular  ${None}  0  True
+  euh Check Displayed Value  Employee subgroup  Blue Collar Monthly  ${None}  0  True
+  euh Check Displayed Value  From  ${None}  ${None}  0  True
+  euh Click Button  Next  ${None}  0  ${None}
+  euh Check Displayed Value  Subtype  Spouse  ${None}  0  True
+  euh Check Displayed Value  First name  Spouse EE15  ${None}  0  True
+  euh Check Displayed Value  Last name  GAMO GL WA PCR PE  ${None}  0  True
+  euh Check Displayed Value  Gender  Female  ${None}  0  True
+  euh Check Displayed Value  Date of birth  01.01.1983  ${None}  0  True
+  euh Check Displayed Value  Name at Birth  ${None}  ${None}  0  True
+  euh Check Displayed Value  Initials  ${None}  ${None}  0  True
+  euh Check Displayed Value  Birthplace  ${None}  ${None}  0  True
+  euh Check Displayed Value  Country of Birth  ${None}  ${None}  0  True
+  euh Check Displayed Value  Nationality  Belgian  ${None}  0  True
+  euh Check Displayed Value  Start Date  01.01.2011  ${None}  0  True
+  euh Check Displayed Value  End Date  19.09.2011  ${None}  0  True
+  euh Check Field Existence  True  ${None}  ${None}  0
+  euh Click Button  Submit  ${None}  0  ${None}
+  euh Check Message Box  The action has been successfully submitted  Ok  False  True
+  euh Select Radio Button  30000280  ${None}  My Details  0  True
+  euh Search and Open Completed PCR  Search  div  0  <<current date/execution date>>  Divorce  Employee 15 GAMO GL WA PCR PE euHReka 99  Blue Collar Monthly  Regular   True  History & Pending Requests  0
+  euh Set Date Value  From  ${None}  ${None}  0
+  euh Check Displayed Value  Action Type  Personal Event  ${None}  0  True
+  euh Check Displayed Value  Reason for Action  Divorce  ${None}  0  True
+  euh Check Displayed Value  Employment  Active  ${None}  0  True
+  euh Check Displayed Value  Personnel area  euHReka 99  ${None}  0  True
+  euh Check Displayed Value  Employee group  Regular  ${None}  0  True
+  euh Check Displayed Value  Employee subgroup  Blue Collar Monthly  ${None}  0  True
+  euh Check Displayed Value  From  20.09.2011  ${None}  0  True
+  euh Click Button  Next  ${None}  0  ${None}
+  euh Check Displayed Value  Subtype  Spouse  ${None}  0  True
+  euh Check Displayed Value  First name  Spouse EE15  ${None}  0  True
+  euh Check Displayed Value  Last name  GAMO GL WA PCR PE  ${None}  0  True
+  euh Check Displayed Value  Gender  Female  ${None}  0  True
+  euh Check Displayed Value  Date of birth  01.01.1983  ${None}  0  True
+  euh Check Displayed Value  Name at Birth  ${None}  ${None}  0  True
+  euh Check Displayed Value  Initials  ${None}  ${None}  0  True
+  euh Check Displayed Value  Birthplace  ${None}  ${None}  0  True
+  euh Check Displayed Value  Country of Birth  ${None}  ${None}  0  True
+  euh Check Displayed Value  Nationality  Belgian  ${None}  0  True
+  euh Check Displayed Value  Start Date  ${None}  ${None}  0  True
+  euh Check Displayed Value  End Date  ${None}  ${None}  0  True
+  euh Check Field Existence  True  01.01.2011 - 19.09.2011  ${None}  0
+  euh Click Button  Cancel  ${None}  0  ${None}
+  euh Check Message Box  Are you sure to quit this PCR ?  Yes  False  True
+  euh EWS Logoff  Yes  True

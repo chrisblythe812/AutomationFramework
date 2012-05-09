@@ -1,0 +1,22 @@
+***Settings***
+Library  EWSLibrary  45
+
+
+***Test Cases***
+Team View_Foreman Substitution_Fixed Time_(Create_Display) by EMP
+
+
+  euh EWS Logon  browser=IE  url=http://eu2r3eqc.euhreka.erp:8000/sap/public/bc/ur/eWS/standard/logInPage.html?sap-client=900  user_name=GAMO_KL_EP73  pwd=test_01  positive_test=True
+  euh Navigate to Specific Tab  module_name=Workforce Administration  sub_module_name=Time Management  tab_name=Time Views  index=0
+  euh Click Icon  widget_name=${None}  icon_name=Team calendar  index=0  positive_test=True
+  euh Select Date and Action on Calendar View  calendar_month=November  calendar_year=2011  calendar_startdate=5/10/2009  calendar_enddate=5/10/2009  calendar_action=Record substitution
+  euh Select Drop Down Field Value  widget_name=${None}  label_name=Subtype  dropdown_value=Foreman substitution  positive_test=True  index=0
+  euh Set Time Value  widget_name=${None}  label_name=From  pTimeValue=${None}  index=0
+  euh Set Time Value  widget_name=${None}  label_name=To  pTimeValue=${None}  index=0
+  euh Click Button  widget_name=${None}  button_name=Submit  notification_message=Successfully submitted  index=0
+  euh Click Link  widget_name=${None}  link_name=Filter options  index=0
+  euh Set CheckBox  widget_name=${None}  label_name=Substitution  checkbox_value=Check
+  euh Click Button  widget_name=${None}  button_name=Refresh  notification_message=Successfully submitted  index=0
+  euh Select Date and Action on Calendar View  calendar_month=November  calendar_year=2011  calendar_startdate=5/10/2009  calendar_enddate=5/10/2009  calendar_action=Foreman substitution
+  euh Click Button  widget_name=${None}  button_name=Cancel  notification_message=Successfully submitted  index=0
+  euh EWS LogOff  confirmation_button=Yes  positive_test=True

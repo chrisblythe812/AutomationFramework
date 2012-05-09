@@ -1,0 +1,26 @@
+***Settings***
+Library  EWSLibrary  90
+Test Template   TM_Clock In_Employee
+Force Tags      Working
+
+***Test Cases***
+TM_Clock In_Employee Firefox    FF
+TM_Clock In_Employee Chrome     Chrome
+
+*** Keywords ***
+TM_Clock In_Employee
+  [Arguments]  ${Browser}
+
+  euh EWS Logon  ${Browser}  http://eu2r3eqc.euhreka.erp:8000/sap/public/bc/ur/eWS/standard/logInPage.html?sap-client=900  GAMO_TM_EP04  test_01  positive_test=True
+  euh Navigate to Specific Tab  Workforce Administration  Time Management  Time Views  index=0
+  euh_click_ee_bubble_option_list  Clock IN / OUT    button_name=30000290_Time Error_Correct  widget_name=My Details
+  euh Select Drop Down Field Value  OR:ClockIn_Reason  test reason  #id="autoCompleter_reason_div"
+  euh Click Button  OR:clockin_button
+  euh Check Last Clockin Hour   <<close>>
+  euh Check Last Clockin Reason   test reason
+  euh Click Button  OR:clockout_button
+  euh Check Last Clockout Hour   <<close>>
+
+  euh Click Icon  Closed icon
+  euh EWS LogOff  confirmation_button=Yes  positive_test=True
+  Close Browser
